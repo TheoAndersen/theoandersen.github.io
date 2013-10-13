@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[]]></title>
   <link href="http://TheoAndersen.github.io/atom.xml" rel="self"/>
   <link href="http://TheoAndersen.github.io/"/>
-  <updated>2013-10-13T21:34:06+02:00</updated>
+  <updated>2013-10-13T21:48:14+02:00</updated>
   <id>http://TheoAndersen.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Theo Andersen]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+    <title type="html"><![CDATA[test post]]></title>
+    <link href="http://TheoAndersen.github.io/blog/2013/10/13/test-post/"/>
+    
+    <updated>2013-10-13T21:35:00+02:00</updated>
+    <id>http://TheoAndersen.github.io/blog/2013/10/13/test-post</id>
+    
+    <content type="html"><![CDATA[<p>Noget test her.. kommer der noget frem på bloggen?</p>
+]]></content>
+    
+  </entry>
   
 </feed>
