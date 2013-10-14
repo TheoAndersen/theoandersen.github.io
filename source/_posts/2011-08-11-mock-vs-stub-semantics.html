@@ -1,8 +1,0 @@
----
-layout: post
-title: "Mock vs. Stub semantics"
-comments: true
----
-<p>mock.Expect(x =&gt; x.method(argument));</p>
-<p>vs</p>
-<p>mock.assertWasCalled(x =&gt; x.method(argument));<br /><br />Many people seem to be against the latter, but IMO it makes for a cleaner implementation, where the actual 'test' is in the assertion part of the code, and not in the expects.. and we don't need expect, and can use only stubs for the rest&nbsp;</p>
