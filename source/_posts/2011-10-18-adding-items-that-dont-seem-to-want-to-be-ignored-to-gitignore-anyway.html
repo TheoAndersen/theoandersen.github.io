@@ -1,0 +1,15 @@
+---
+layout: post
+title: "Ignoring already committed files"
+comments: true
+---
+<p>Ever added a file to .gitignore and found that it still kept being added to the index? Well this is because git will only ignore files not currently under source control, or only files that its not already tracking.</p>
+
+<p>To fix this, tell git to stop tracking the file:
+<pre>
+git rm &#8211;cached filename
+</pre></p>
+
+<p>This is usable for when you discover a file thats already been commited which should be ignored.</p>
+
+<p>source: <a href="http://stackoverflow.com/questions/1139762/gitignore-file-not-ignoring">stackoverflow</a></p>
