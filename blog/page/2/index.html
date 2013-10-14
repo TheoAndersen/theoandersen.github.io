@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Theo Andersen Carton</title>
+  <meta name="author" content="Theo Andersen Carton">
+
+  
+  <meta name="description" content="I recently looked into calling ASP.NET Ajax web-services from JQuery, and it&rsquo;s actually not that hard.
+The ASP.NET Ajax web-service
+To create a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TheoAndersen.github.io/blog/page/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Theo Andersen Carton" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner">
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TheoAndersen.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2009/10/11/calling-aspnet-ajax-web-services-from-jquery/">Calling ASP.NET AJAX Web-services From JQuery</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-11T00:00:00+02:00" pubdate data-updated="true">Oct 11<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently looked into calling ASP.NET Ajax web-services from JQuery, and it&rsquo;s actually not that hard.</p>
+<h2>The ASP.NET Ajax web-service</h2>
+<p>To create a client script enabled web-service, add the [ScriptService] to the web service class. This makes sure that the methods can be called from client script and also makes the returntype a JSON.</p>
+<pre class="brush: csharp; gutter: false">[WebService(Namespace = "http://tempuri.org/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+[ScriptService]
+public class AjaxWebservice : System.Web.Services.WebService
+{
+    [WebMethod]
+    public string HelloWorld()
+    {
+        return "Hello World - " + DateTime.Now.ToShortTimeString();
+    }
+
+    [WebMethod]
+    public object HelloObject(int id)
+    {
+        return new { Id = id, Success = true, Text="&lt;b&gt;It went well!&lt;/b&gt;" };
+    }
+}</pre>
+<p>Note that the returned object in the last webservice method, is converted to a JSON object, which we will see shortly can be used very easily in the client.</p>
+<h2>The client-side JQuery ajax call</h2>
+<p>Now we have the ajax web service done, in .net manner, we would like to use JQuery&rsquo;s easy and simple interface to consume it.</p>
+<p>The default way to create an asynchronous client side call using JQuery is via an $.ajax() call <br />( see <a href="http://docs.jquery.com/Ajax">http://docs.jquery.com/Ajax</a> for more details on this)</p>
+<p>The client-side script able to consume the HelloObject webmethod, looks like this:</p>
+<pre class="brush: js; gutter: false">$.ajaxSetup({
+  type: "POST",
+  contentType: "application/json; charset=utf-8",
+  data: "{}",
+  dataFilter: function(data) {
+    var msg;
+
+    if (typeof (JSON) !== 'undefined' &amp;&amp;
+    typeof (JSON.parse) === 'function')
+      msg = JSON.parse(data);
+    else
+      msg = eval('(' + data + ')');
+
+    if (msg.hasOwnProperty('d'))
+      return msg.d;
+    else
+      return msg;
+  }
+});
+
+$.ajax({
+  url: "AjaxWebservice.asmx/HelloObject",
+  data: "{id:3}",
+  success: function(msg) {
+    if (msg.Success) {
+      alert("yes: " + msg.Text + "(" + msg.Id + ")");
+    }
+    else {
+      alert("nop: " + msg.Text + "(" + msg.Id + ")");
+    }
+  }
+});</pre>
+<p>The first $.ajaxSetup() part, sets the default values for all subsequent ajax calls, and the last $.ajax() call makes the asynchronous request to the server. The dataFilter function is supposed to even out some of the variations, different version of net handle JSON, but i haven&rsquo;t gone that much in detail with it. ( go here to read more about it : <a href="http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/">http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/</a>)</p>
+<p>This example calls the the webserver with an id having the value two, which then responds with a JSON object. When the client side successfully completes the request, it creates an alertbox from the data in the returned JSON object.</p>
+<p>Sources: <br /><a href="http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/">http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/</a> <br /><a href="http://encosia.com/2008/06/05/3-mistakes-to-avoid-when-using-jquery-with-aspnet-ajax/">http://encosia.com/2008/06/05/3-mistakes-to-avoid-when-using-jquery-with-aspnet-ajax/</a> <br /><a href="http://docs.jquery.com/Ajax">http://docs.jquery.com/Ajax</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2009/09/24/git-e28093-fast-distributed-code-versioning/">Git - Fast Distributed Code Versioning</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-24T00:00:00+02:00" pubdate data-updated="true">Sep 24<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In case you haven&rsquo;t noticed, there&#8217;s a new code versioning system around, that&#8217;s gaining popularity fast.</p>
+<p>Meet Git.. :)   <br /><a href="http://git-scm.com/" target="_blank"><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="image" src="/assets/git.png" border="0" alt="image" width="606" height="87" /></a>&nbsp; <br />(click to open git&rsquo;s homepage)</p>
+<p>Now i am just starting to lean git, but as far as I&#8217;ve understood, here&#8217;s are some of the main points:</p>
+<ul>
+<li><strong>Distributed model, as opposed to the normal centralized model from CVS and Subversion</strong> &ndash; this means that you don&rsquo;t see your versioning as working from one place all the time. You have your own repository that you commit to, and then you pull or push your changes to or from others from that. </li>
+<li><strong>Your repository contains the whole history of git (the whole thing) locally</strong>&nbsp; &ndash;<strong> that both means that diff&rsquo;s and history lookups are dead fast</strong> &ndash; and also that you have images of everything lying on every person on the projects computer. </li>
+<li><strong>Git tracks content not files</strong> &ndash; this means that there&#8217;s better code-tracking even across files, and also makes it easier for it to merge content. </li>
+<li><strong>Open source and made by Linus Thorvalds and his team</strong> &ndash; is currently used for versioning the Linux kernel. </li>
+<li><strong>Most open source projects around are currently converting from subversion to it</strong>, because the distributed model suits open source project much better &ndash; also there&#8217;s free hosting for open source projects on <a href="http://github.com/" target="_blank">Github</a>. </li>
+</ul>
+<p>On Git&rsquo;s homepage you can find information, tutorials, and also a nice video of Linus expressing his view on code versioning.    <br /> <br />Now git is developed on linux, but there&#8217;s a port for Windows called <a href="http://code.google.com/p/msysgit/downloads/list" target="_blank">msysGit</a> and extensions which add a nicer gui and visual studio support on sourceforge (<a href="http://sourceforge.net/projects/gitextensions/" target="_blank">GitExtensions</a>)</p>
+<p>Now it seems that git is stronger and faster than Subversion which we normally use on our projects (or Team Foundation), but there&#8217;s a slight learning hump to start with, as most people are used to a centralized versioning model, as CVS, SVN and Team Foundation (although you can of cause use a central repository with git also). Once people get more acquainted with git I&#8217;m sure it will gain even more popularity.</p>
+<p>That&#8217;s all for now on Git - once I&#8217;ve played around with it some more I&#8217;ll write another post about my experiences.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2009/08/28/jquery-e28093-smarter-client-scripting/">JQuery - Smarter Client Scripting</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-28T00:00:00+02:00" pubdate data-updated="true">Aug 28<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Web developers should already be familiar with JQuery. It&#8217;s an opensouce JavaScript library that makes writing simpler and more effective JavaScript possible. And it&#8217;s made to abstract away differences between browsers.</p>
+<p>Actually it requires nothing more than a JavaScript library that you download and reference. <br /><br />Normally i would show some JQuery code here, but as i&#8217;m myself just starting learning and using JQuery, I will just tell you that there&#8217;s a good tutorial and info about JQuery on its site: <a href="http://jquery.com/">http://jquery.com/</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2009/07/24/yet-another-development-blog-onlinee280a6/">Yet Another Development Blog Online.</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-24T00:00:00+02:00" pubdate data-updated="true">Jul 24<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is the beginning of yet another development blog, mostly oriented on .NET development.</p>
+<p>I&rsquo;m an software engineer, just in the beginning of my career and as I&#8217;m learning and expanding my knowledge and skills, I&#8217;ve decided to create a blog, thinking that it will make me improve my own skills sharing the knowledge.&nbsp; <br /> <br />How?.. well:</p>
+<ul>
+<li>Blogging interesting or tricky subjects forces me to work the subject to present it in an understandable manner &ndash; which will give me a better understanding of the topic </li>
+<li>This is the place i can go to for all my future &ldquo;How the #&curren;#&rdquo; did i do that&rdquo; -experiences </li>
+<li>Eventually someone will click the wrong link somewhere, or write the wrong url in the browser, and end on my blog - and perhaps that someone will comment a post, and make me learn something i got wrong, or something that could have been done different. It&rsquo;s all about sharing and learning </li>
+<li>And finally&hellip; I use blogs all the time when ever I&rsquo;m sorting out some problem or learning about a new development topic, it&rsquo;s time to give something back, and perhaps somebody somewhere will benefit of it. </li>
+</ul>
+<p>So I&#8217;ll try to keep putting tricks, thoughts or anything I find interesting and useful on this blog. Maybe I&#8217;ll even find a name for it one day.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/07/22/resources-for-understanding-git/">Resources for understanding git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/27/using-unit-tests-in-ios-development/">Using unit tests in IOS development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/18/adding-items-that-dont-seem-to-want-to-be-ignored-to-gitignore-anyway/">Ignoring already committed files</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/07/james-shores-lets-play-tdd-screencasts/">James Shore&#8217;s - Lets Play TDD screencasts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/15/kent-beck-tdd-screencasts/">Kent Beck TDD screencasts</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/theoandersen">@theoandersen</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'theoandersen',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Theo Andersen Carton <br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, customized with <a href="https://github.com/mjhea0/whiterspace">whiterspace</a>.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'theoandersengithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title></title>
-  <meta name="author" content="Theo Andersen">
+  <title>Theo Andersen Carton</title>
+  <meta name="author" content="Theo Andersen Carton">
 
   
-  <meta name="description" content="Noget test her.. kommer der noget frem på bloggen?
-">
+  <meta name="description" content="To be good at using git, you need not only to learn it but you need to understand it. Git&#8217;s working seems like magic until you understand why &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +21,7 @@
   <link rel="canonical" href="http://TheoAndersen.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Theo Andersen Carton" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -69,7 +68,7 @@
   <header>
   
     
-      <h1 class="entry-title"><a href="/blog/2013/10/13/test-post/">Test Post</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/07/22/resources-for-understanding-git/">Resources for Understanding Git</a></h1>
       
       
     
@@ -86,14 +85,450 @@
   
 
 
-<time datetime="2013-10-13T21:35:00+02:00" pubdate data-updated="true">Oct 13<span>th</span>, 2013</time>
+<time datetime="2012-07-22T00:00:00+02:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Noget test her.. kommer der noget frem på bloggen?</p>
+  <div class="entry-content"><p>To be good at using git, you need not only to learn it but you need to understand it. Git&#8217;s working seems like magic until you understand why it does what it does.</p>
+<p>This is the three best resources i&#8217;ve found for understanding how git works.&nbsp;I&#8217;ve you use git and don&#8217;t know these, i suggest you take a look.&nbsp;</p>
+<p><strong>The Git Parable&nbsp;</strong>- (blogpost:&nbsp;<a title="http://tom.preston-werner.com/2009/05/19/the-git-parable.html" href="http://tom.preston-werner.com/2009/05/19/the-git-parable.html">http://tom.preston-werner.com/2009/05/19/the-git-parable.html</a>)<br />Tom Preston-Werner has written a great blogpost describing how you might come to design a VCS like git. Now this is a made up story, but provides insights into the reasoning on the design &nbsp;for git.&nbsp;</p>
+<p><strong>Git for Ages 5 and Up</strong> - (presentation: <a title="http://www.youtube.com/watch?v=YwIwi80bXX4" href="http://www.youtube.com/watch?v=YwIwi80bXX4">http://www.youtube.com/watch?v=YwIwi80bXX4</a>)<br />As you probably already know, git works internally with its commits in a graph-structure. This presentation explains and runs through examples in git while illustrating what git does using Tinker Toys. This may sound weird but is actually a great way to understand git&#8217;s internal structure.</p>
+<p><strong>Think Like A Git</strong>&nbsp;- (website:&nbsp;<a title="http://think-like-a-git.net/" href="http://think-like-a-git.net/">http://think-like-a-git.net/</a>)<br />A site that more directly describes git for &#8220;Advances beginners&#8221;.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/27/using-unit-tests-in-ios-development/">Using Unit Tests in IOS Development</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-27T00:00:00+02:00" pubdate data-updated="true">Apr 27<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using unit tests in XCode you have the posibility to have two test targets (sub-projects) set up; one for <em>logic tests</em> and one for <em>application tests</em>. So whats the difference?</p>
+<p><em>Logic tests</em> run without the Application running, so you wont be able to reach your app-delegate or anything UI related, but you will be able to test POOC&#8217;s (Plain Old Obj-C Classes). The <em>Application Tests</em> target, will start up the simulator and use it to run your unit tests.</p>
+<p>When i develop, i normally use the logic tests target for the classes providing domain behaviour. Not having to start up the simulator makes theses tests fast to run, making the feedback cycle shorter and you always want as short a feedback cycle as you can get.&nbsp;So when implementing a new feature i start up with the base domain behaviour and make it run with the logic tests. I then i move to the GUI, which uses this new feature and implement it with tests in the Application tests target. With this working i can then wire up the nibs or similar and start up the simulator to check that the feature works as it should.</p>
+<p>It did initially seem a bit odd to have two unit test targets, but being that the one needs the simulator to run it makes sense.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/18/adding-items-that-dont-seem-to-want-to-be-ignored-to-gitignore-anyway/">Ignoring Already Committed Files</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-18T00:00:00+02:00" pubdate data-updated="true">Oct 18<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ever added a file to .gitignore and found that it still kept being added to the index? Well this is because git will only ignore files not currently under source control, or only files that its not already tracking.</p>
+
+<p>To fix this, tell git to stop tracking the file:
+<pre>
+git rm &#8211;cached filename
+</pre></p>
+
+<p>This is usable for when you discover a file thats already been commited which should be ignored.</p>
+
+<p>source: <a href="http://stackoverflow.com/questions/1139762/gitignore-file-not-ignoring">stackoverflow</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/07/james-shores-lets-play-tdd-screencasts/">James Shore&#8217;s - Lets Play TDD Screencasts</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-07T00:00:00+02:00" pubdate data-updated="true">Jun 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently discovered James Shore&#8217;s most excellent &#8220;Lets Play TDD&#8221; series. It&#8217;s&nbsp;a series of screencasts all of around 15 minuttes, which shows the building of a java application from the start with TDD - and this live, with all the choices and hick-ups and whatever included.&nbsp;</p>
+<p>I&#8217;m only just reached episode 22 so far, and he&#8217;s made over a 100 at the time of writing this post. I will highly recommend this to anyone that wants to learn more about TDD in a real project.</p>
+<p>As with Kent Becks TDD screencasts, its always great to see the different styles of TDD, i find it a great way to learn more. And James seems to almost produce episodes faster than i have time to watch them :).</p>
+<p>First blog post about the series:<a href="http://jamesshore.com/Blog/Lets-Play/Lets-Play-Test-Driven-Development.html">http://jamesshore.com/Blog/Lets-Play/Lets-Play-Test-Driven-Development.html</a></p>
+<p>Links to all the posts: <a href="http://jamesshore.com/Blog/Lets-Play">http://jamesshore.com/Blog/Lets-Play</a>/</p>
+<p>..great stuff</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/15/kent-beck-tdd-screencasts/">Kent Beck TDD Screencasts</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-15T00:00:00+01:00" pubdate data-updated="true">Feb 15<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A good resource for anybody wanting to learn more about Test Driven Development, is the 4 screencasts by Kent Beck, which can be bought from The Pragmatic Bookshelf site.   <br /><a href="http://pragprog.com/screencasts/v-kbtdd/test-driven-development">http://pragprog.com/screencasts/v-kbtdd/test-driven-development</a></p>
+<p>This is Kent Beck describing the workflow he uses when doing TDD and is a great way to learn a bit more about it.</p>
+<p>Here&rsquo;s Mark Needham&rsquo;s comments of the screencasts:   <br /><a href="http://www.markhneedham.com...kent-becks-test-driven-development-screencasts/">http://www.markhneedham.com&#8230;kent-becks-test-driven-development-screencasts/</a></p>
+<p>Interesting points to notice about the approach</p>
+<ul>
+<li><em>He starts of writing the code inside the test</em>, and first pulls it out into its own class when its justified to do so. This way its easier to start, as we don&rsquo;t have to find out how we want the design of the class/classes, before we have the code to put in there.</li>
+<li><em>Smaller tests are removed, when bigger tests cover the same parts</em>. As tests must be maintained, it makes sense not to have multiple test covering the same areas.</li>
+<li>Kent tries to <em>Call hits shots</em>, when running the unit tests, meaning that he tries to predict if the test is going to evaluate to red or green, as a exercise when TDD&rsquo;ing. </li>
+</ul>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/14/using-unit-tests-to-shorten-the-feedback-cycle/">Using Unit-tests to Shorten the Feedback Cycle</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-14T00:00:00+01:00" pubdate data-updated="true">Nov 14<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The speed of development can be measured in how long it takes to write code, and then how long it takes to test that it works.</p>
+<p>Now the normal way of testing is running the system and poke around in the area of the change, to confirm that the change works as it should. This can be very slow if you have to enter multiple hierarchy&#8217;s&nbsp; of nested pages or because the system simply takes a while to load and enter. This is where unit tests can be of help.</p>
+<p>Even though you don&rsquo;t buy into the whole idea of covering everything with unit-tests, shortening the feedback cycle will shorten the time i takes to find out if your change works as it should, and this can be helped by testing through a unit-test instead of though the actual system.</p>
+<p>I experienced this my self, when building a component that would allow other systems to integrate data our. In this case every request needed to convert input data, validate it, run validation against another external source (returned as json), and then save in the database. Now in this case, i found that creating simple unit tests, for testing the parts allowed me to build this more in component, and much faster, as i was shortening the feedback cycle. Now not every piece of code is straight forward to unit test. But at least evaluating the quickest/easiest way to test a piece of code, should be on every pragmatic programmers backbone.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/23/the-most-basic-unit-test/">A Very Basic Unit Test</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-23T00:00:00+02:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today i realized what the most basic form of a unit-test is.</p>
+
+<p>It&rsquo;s this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// the account must be reapproved</span>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="n">Account</span><span class="p">.</span><span class="n">Type</span> <span class="p">==</span> <span class="n">AccountType</span><span class="p">.</span><span class="n">Normal</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">Account</span><span class="p">.</span><span class="n">ApprovalExpiryDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I was looking at a similar piece of code on the project i&rsquo;m currently developer on at work, and was wondering why the first line of comments were there (i hate unnecessary comments, which clutter the meaning of the code). And then i realized that even though the first line of comments is clearly repeating whats really easily read in the expression in the if statement, it is making sure that that&rsquo;s what should be in the if-expression. If someone were to change the expression we would still have that line of code to make sure that the expression was what was originally intended.</p>
+
+<p>Normally i wouldn&rsquo;t write the first line of comments, but only the second as it describes why we set the accounts ApprovalExpiryDate to the current DateTime, which isn&rsquo;t very clear. Even better would though be to extract the line in the if into a method that expressed what we try to explain in that comment line (SetAccountToBeReapproved() or something).</p>
+
+<p>Now this is a stupid example yes, but the testing mindset is there. The best solution, and next step would then be to have a unit test check this, and enforce it automatically instead.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/30/vs2008-suo-file-rant/">VS2008 .suo File Rant</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-30T00:00:00+02:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently Visual Studio 2008 has begun to act very slowly, taking minutes to start and shutdown whilst showing the grayed &#8220;not responding&#8221; at the same time, because windows can&#8217;t figure out what it&#8217;s doing either. I started uninstalling plugins as CodeRush, GitExtensions etc, but it didn&#8217;t help. Then googling the problem i found a suggestion as to remove the .suo file that lies in the same folder as the .sln file, and it worked! :S</p>
+<p>Removing the .suo file which was about 50mb, took the visual studio ram usage from just over 1gb to 100mb, and Visual Studio is now much more responsive also. Very odd, but it seems a lot of people has the same experience. Sure hope this becomes better / more solid in VS2010.</p>
+<p>So if Visual Studio begins to slow up, and take a lot of ram, then try renaming the .suo to .suoold or something, and see if it doesn&#8217;t help the performance. :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/20/quick-quick-guide-to-the-vi-editior-in-git-bash/">Quick-quick Guide to the VI-editior in Git Bash</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-20T00:00:00+01:00" pubdate data-updated="true">Mar 20<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Two modes: command (the initial) and type   <br /> <br /><strong>Commands:</strong></p>
+<table style="width: 550px;" border="0" cellspacing="0" cellpadding="2">
+<tbody>
+<tr>
+<td width="89" valign="top">&lsquo;i&rsquo;</td>
+<td width="459" valign="top">goes to Type-mode (where you can type like a normal notepad document)</td>
+</tr>
+<tr>
+<td width="89" valign="top">&lsquo;esc&rsquo;</td>
+<td width="459" valign="top">Goes to Command-mode</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quitting</strong>: (from command-mode)</p>
+<table style="width: 551px;" border="0" cellspacing="0" cellpadding="2">
+<tbody>
+<tr>
+<td width="91" valign="top">&lsquo;:wq&rsquo; + enter</td>
+<td width="458" valign="top">Quit and save</td>
+</tr>
+<tr>
+<td width="91" valign="top">&lsquo;:q!&rsquo; + enter</td>
+<td width="458" valign="top">Quit and don&rsquo;t save</td>
+</tr>
+</tbody>
+</table>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/19/solution-to-slow-git-bash-when-logged-in-as-a-domain-user/">Solution to Slow Git Bash When Logged in as a Domain User</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-19T00:00:00+01:00" pubdate data-updated="true">Mar 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today i found that my newly installed git on my laptop at work was working pretty slow. 0.5 ~ 1sec delay on loading the git bash, and on every command. I logged in as a local user on the computer and the delay was gone.</p>
+
+<p>Searching the internet a bit, i found that git uses the default home, on my account set to be a network account. This ment that git would look in this directory all the time, causing the delay.</p>
+
+<p>To fix this i created a local user environment variable, overriding the default one, and setting it to %USERPROFILE% which points at c:\users[username].</p>
+
+<p><img src="/assets/slow_git_bash_1.png" alt="" /></p>
+
+<p>This makes git look the right place for the git.config.   <br />    <br />Next is that when you click the git bash shortcut, i opened on my default homedrive, which was a network connection.&#160; Looking at the properties for the shortcut it looks like this:</p>
+
+<p><img src="/assets/slow_git_bash_2.png" alt="" /></p>
+
+<p>Changing the &ldquo;Start in&rdquo; to c:\user[user], or any other place made the shortcut open much faster for me.</p>
+
+<p>Now my git bash is back and fast again :)</p>
 </div>
   
   
@@ -102,6 +537,8 @@
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -114,7 +551,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/10/13/test-post/">test post</a>
+        <a href="/blog/2012/07/22/resources-for-understanding-git/">Resources for understanding git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/27/using-unit-tests-in-ios-development/">Using unit tests in IOS development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/18/adding-items-that-dont-seem-to-want-to-be-ignored-to-gitignore-anyway/">Ignoring already committed files</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/07/james-shores-lets-play-tdd-screencasts/">James Shore&#8217;s - Lets Play TDD screencasts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/15/kent-beck-tdd-screencasts/">Kent Beck TDD screencasts</a>
       </li>
     
   </ul>
@@ -159,7 +612,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Theo Andersen <br/>
+  Copyright &copy; 2013 - Theo Andersen Carton <br/>
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, customized with <a href="https://github.com/mjhea0/whiterspace">whiterspace</a>.</span>
 </p>
 

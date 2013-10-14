@@ -5,13 +5,17 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - Theo Andersen Carton</title>
+  <title>A very basic unit test - Theo Andersen Carton</title>
   <meta name="author" content="Theo Andersen Carton">
 
   
-  <meta name="description" content="Blog Archive 2012 Resources for understanding git
-Jul 22 2012 Using unit tests in IOS development
-Apr 27 2012 2011 Ignoring already committed files &hellip;">
+  <meta name="description" content="Today i realized what the most basic form of a unit-test is. It&rsquo;s this: 1
+2
+3
+4
+5
+// the account must be reapproved
+if(Account.Type == &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +24,7 @@ Apr 27 2012 2011 Ignoring already committed files &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://TheoAndersen.github.io/blog/archives">
+  <link rel="canonical" href="http://TheoAndersen.github.io/blog/2010/06/23/the-most-basic-unit-test">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Theo Andersen Carton" type="application/atom+xml">
@@ -62,157 +66,110 @@ Apr 27 2012 2011 Ignoring already committed files &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+  
+    
+      <h1 class="entry-title">A Very Basic Unit Test</h1>
+    
+  
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-23T00:00:00+02:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2010</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><p>Today i realized what the most basic form of a unit-test is.</p>
 
-  
-  <h2>2012</h2>
+<p>It&rsquo;s this:</p>
 
-<article>
-  
-<h1><a href="/blog/2012/07/22/resources-for-understanding-git/">Resources for understanding git</a></h1>
-<time datetime="2012-07-22T00:00:00+02:00" pubdate><span class='month'>Jul</span> <span class='day'>22</span> <span class='year'>2012</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/04/27/using-unit-tests-in-ios-development/">Using unit tests in IOS development</a></h1>
-<time datetime="2012-04-27T00:00:00+02:00" pubdate><span class='month'>Apr</span> <span class='day'>27</span> <span class='year'>2012</span></time>
-
-</article>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// the account must be reapproved</span>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="n">Account</span><span class="p">.</span><span class="n">Type</span> <span class="p">==</span> <span class="n">AccountType</span><span class="p">.</span><span class="n">Normal</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">Account</span><span class="p">.</span><span class="n">ApprovalExpiryDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>I was looking at a similar piece of code on the project i&rsquo;m currently developer on at work, and was wondering why the first line of comments were there (i hate unnecessary comments, which clutter the meaning of the code). And then i realized that even though the first line of comments is clearly repeating whats really easily read in the expression in the if statement, it is making sure that that&rsquo;s what should be in the if-expression. If someone were to change the expression we would still have that line of code to make sure that the expression was what was originally intended.</p>
 
-  
-  <h2>2011</h2>
+<p>Normally i wouldn&rsquo;t write the first line of comments, but only the second as it describes why we set the accounts ApprovalExpiryDate to the current DateTime, which isn&rsquo;t very clear. Even better would though be to extract the line in the if into a method that expressed what we try to explain in that comment line (SetAccountToBeReapproved() or something).</p>
 
-<article>
-  
-<h1><a href="/blog/2011/10/18/adding-items-that-dont-seem-to-want-to-be-ignored-to-gitignore-anyway/">Ignoring already committed files</a></h1>
-<time datetime="2011-10-18T00:00:00+02:00" pubdate><span class='month'>Oct</span> <span class='day'>18</span> <span class='year'>2011</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2011/06/07/james-shores-lets-play-tdd-screencasts/">James Shore&#8217;s - Lets Play TDD screencasts</a></h1>
-<time datetime="2011-06-07T00:00:00+02:00" pubdate><span class='month'>Jun</span> <span class='day'>07</span> <span class='year'>2011</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2011/02/15/kent-beck-tdd-screencasts/">Kent Beck TDD screencasts</a></h1>
-<time datetime="2011-02-15T00:00:00+01:00" pubdate><span class='month'>Feb</span> <span class='day'>15</span> <span class='year'>2011</span></time>
-
-</article>
-
-
-
-  
-  <h2>2010</h2>
-
-<article>
-  
-<h1><a href="/blog/2010/11/14/using-unit-tests-to-shorten-the-feedback-cycle/">Using unit-tests to shorten the feedback cycle</a></h1>
-<time datetime="2010-11-14T00:00:00+01:00" pubdate><span class='month'>Nov</span> <span class='day'>14</span> <span class='year'>2010</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2010/06/23/the-most-basic-unit-test/">A very basic unit test</a></h1>
-<time datetime="2010-06-23T00:00:00+02:00" pubdate><span class='month'>Jun</span> <span class='day'>23</span> <span class='year'>2010</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2010/03/30/vs2008-suo-file-rant/">VS2008 .suo file rant</a></h1>
-<time datetime="2010-03-30T00:00:00+02:00" pubdate><span class='month'>Mar</span> <span class='day'>30</span> <span class='year'>2010</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2010/03/20/quick-quick-guide-to-the-vi-editior-in-git-bash/">Quick-quick guide to the VI-editior in Git bash</a></h1>
-<time datetime="2010-03-20T00:00:00+01:00" pubdate><span class='month'>Mar</span> <span class='day'>20</span> <span class='year'>2010</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2010/03/19/solution-to-slow-git-bash-when-logged-in-as-a-domain-user/">Solution to slow Git bash when logged in as a domain user</a></h1>
-<time datetime="2010-03-19T00:00:00+01:00" pubdate><span class='month'>Mar</span> <span class='day'>19</span> <span class='year'>2010</span></time>
-
-</article>
-
-
-
-  
-  <h2>2009</h2>
-
-<article>
-  
-<h1><a href="/blog/2009/10/11/calling-aspnet-ajax-web-services-from-jquery/">Calling ASP.NET AJAX web-services from JQuery</a></h1>
-<time datetime="2009-10-11T00:00:00+02:00" pubdate><span class='month'>Oct</span> <span class='day'>11</span> <span class='year'>2009</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2009/09/24/git-e28093-fast-distributed-code-versioning/">Git - Fast distributed code versioning</a></h1>
-<time datetime="2009-09-24T00:00:00+02:00" pubdate><span class='month'>Sep</span> <span class='day'>24</span> <span class='year'>2009</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2009/08/28/jquery-e28093-smarter-client-scripting/">JQuery - Smarter client scripting</a></h1>
-<time datetime="2009-08-28T00:00:00+02:00" pubdate><span class='month'>Aug</span> <span class='day'>28</span> <span class='year'>2009</span></time>
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2009/07/24/yet-another-development-blog-onlinee280a6/">Yet another development blog online.</a></h1>
-<time datetime="2009-07-24T00:00:00+02:00" pubdate><span class='month'>Jul</span> <span class='day'>24</span> <span class='year'>2009</span></time>
-
-</article>
-
+<p>Now this is a stupid example yes, but the testing mindset is there. The best solution, and next step would then be to have a unit test check this, and enforce it automatically instead.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Theo Andersen Carton</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-23T00:00:00+02:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TheoAndersen.github.io/blog/2010/06/23/the-most-basic-unit-test/" data-via="theo_andersen" data-counturl="http://TheoAndersen.github.io/blog/2010/06/23/the-most-basic-unit-test/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/03/30/vs2008-suo-file-rant/" title="Previous Post: VS2008 .suo file rant">&laquo; VS2008 .suo file rant</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/11/14/using-unit-tests-to-shorten-the-feedback-cycle/" title="Next Post: Using unit-tests to shorten the feedback cycle">Using unit-tests to shorten the feedback cycle &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -296,7 +253,10 @@ Apr 27 2012 2011 Ignoring already committed files &hellip;">
       var disqus_shortname = 'theoandersengithubio';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TheoAndersen.github.io/blog/2010/06/23/the-most-basic-unit-test/';
+        var disqus_url = 'http://TheoAndersen.github.io/blog/2010/06/23/the-most-basic-unit-test/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
