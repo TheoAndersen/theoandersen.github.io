@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Adaptive Access Layers spike - Theo Andersen Carton</title>
+  <meta name="author" content="Theo Andersen Carton">
+
+  
+  <meta name="description" content="After reading Ulrik Born&rsquo;s MSDN article on Adaptive Access Layers (AAL) and hearing him present it at my company, I thought it would be a nice &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TheoAndersen.github.io/blog/2013/12/09/adaptive-access-layers-spike">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Theo Andersen Carton" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner">
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TheoAndersen.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+  
+    
+      <h1 class="entry-title">Adaptive Access Layers Spike</h1>
+    
+  
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-09T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>After reading Ulrik Born&rsquo;s MSDN article on <a href="http://msdn.microsoft.com/en-us/magazine/dn451442.aspx">Adaptive Access Layers</a> (AAL) and hearing him present it at my company, I thought it would be a nice little exercise to start on a spike of an AAL framework.</p>
+
+<p>The AAL spike code can be found on: <a href="http://www.github.com/TheoAndersen/AdaptiveAccessLayerSpike">github.com/TheoAndersen/AdaptiveAccessLayerSpike</a></p>
+
+<p>The general idea is that every external dependency of the system as ex. database access, logging etc. is handled by an AAL-framework which dynamically creates the implementation of the interfaces you provide from your business logic, to use the external dependencies. So if you need a logging mechanism, you would create an interface with the right attributes to denote that its an interface providing access to the logger. The framework would then create an implementation for the interface and wire it up to the logging part of the framwork, without the code using the interface knowing about this.</p>
+
+<p><img class="center" src="/assets/aal-class-diagram.png"></p>
+
+<p>This class diagram shows the structure I&rsquo;ve used in the spike. The ITestLogWriter represents an interface created by some business logic. The implementation is dynamically created by the AAL code, which wires it up to the LogContract derived AAL class, which handles the actual logging.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[LogContract]</span>
+</span><span class='line'><span class="k">public</span> <span class="k">interface</span> <span class="n">ITestLogWriter</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="na">   [LogEntryContract]</span>
+</span><span class='line'>   <span class="kt">string</span> <span class="nf">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">,</span> <span class="kt">int</span> <span class="n">second</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is how an interface could look like. The implementation that the AAL framework would create to hook this interface would then look like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">TestLogWriterImpl</span> <span class="p">:</span> <span class="n">LogContract</span><span class="p">,</span> <span class="n">ITestLogWriter</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">,</span> <span class="kt">int</span> <span class="n">second</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="kt">object</span><span class="p">[]</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[</span><span class="m">2</span><span class="p">];</span>
+</span><span class='line'>        <span class="n">parameters</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">message</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">parameters</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">second</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="k">base</span><span class="p">.</span><span class="n">ExecuteImpl</span><span class="p">(</span><span class="n">MethodBase</span><span class="p">.</span><span class="n">GetCurrentMethod</span><span class="p">(),</span> <span class="n">parameters</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now this would be generated directly in MSIL code. As can be seen from the class diagram as well, the AdaptiveLayerBase implements an ExecuteImpl method which fits together with the standard IL code. This fits together with an abstract Execute method, which is what the specific AAL layers must implement to act on any message executed on an AAL interface.</p>
+
+<p>Now i wont post any crazy IL generating code here, you can look at the github repo yourself for the part i&rsquo;ve tried out, but it doesn&rsquo;t feel to me like very sturdy code. The method i used to find out what IL to write, was that i created the implementation in c# first and then used the &ldquo;ildasm&rdquo; tool to disassemble the dll and watch what IL code it compiled into, so that i could use that as a recipe for my implementation. Still its poor error handling you get when the generated assembly just doesn&rsquo;t work, which is also a good reason to keep the generated IL part as small and simple as possible, and keep the normal c# code doing the lifting.</p>
+
+<h2>Good reasoning behind an advanced implementation</h2>
+
+<p>Now I like the overall reasoning behind this approach, but I&rsquo;m not sure I like the actual solution. The positives are that you enforce seperation of the external dependencies behind interfaces, to make sure that the business logic isn&rsquo;t tangled to much along with other concerns. The interface without a compile time implementation is though a little special. It makes the wiring of all business logic with external dependencies dynamic, so that every request will go through several &lsquo;magic&rsquo; holes in the code all the time. Debugging will be kind of odd as the current position will disappear and (hopefully) appear the right place on the other side.</p>
+
+<p>I do think that the reasoning behind AAL of separating and generalizing/encapsulating external dependencies behind abstractions as interfaces are important in enterprise applications and that the referred anti-patterns are very real. Even though, it is though possible to achieve this if you continuously refactor and improve the code your working on. Much development seems opposed to continuous refactoring and generalization. Developers often just continue in the existing track, and dosen&rsquo;t think to refactor or change what theyr externding to make it better, making it necessary to come up with an architecture/framework like this up front. I think its impressive that Ulriks team has created this architecture and have extended it as much to really improve the productivity of theyr team, but i would optimally like a team to gradually mold a and continuously refactor a system to keep it easy to use and test, without having to create a framework with restrictions on how the developers have to work (even though its an internally developed framework). If we dont get developers to think critically on the code and refactor it, we will just have to create a new framwork to the business logic as well at some time, to keep them from messing that up, and so further.</p>
+
+<h4>Sources:</h4>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/magazine/dn451442.aspx">Adaptive Access Layers + Dependency Injection = Productivity on MSDN by Ulrik Born</a></li>
+<li><a href="http://www.github.com/TheoAndersen/AdaptiveAccessLayerSpike">Adaptive Access Layer Spike on Github</a></li>
+<li><a href="http://gertgregers.wordpress.com/2013/12/05/simple-adaptive-access-layer-helloworld-sample/">Simple Adaptive Access Layer Helloworld sample (using Roslyn)</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Theo Andersen Carton</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-09T00:00:00+01:00" pubdate data-updated="true"></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://TheoAndersen.github.io/blog/2013/12/09/adaptive-access-layers-spike/" data-via="theo_andersen" data-counturl="http://TheoAndersen.github.io/blog/2013/12/09/adaptive-access-layers-spike/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/07/22/resources-for-understanding-git/" title="Previous Post: Resources for understanding git">&laquo; Resources for understanding git</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Theo Andersen Carton <br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, customized with <a href="https://github.com/mjhea0/whiterspace">whiterspace</a>.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'theoandersengithubio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TheoAndersen.github.io/blog/2013/12/09/adaptive-access-layers-spike/';
+        var disqus_url = 'http://TheoAndersen.github.io/blog/2013/12/09/adaptive-access-layers-spike/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

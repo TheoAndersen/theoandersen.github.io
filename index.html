@@ -9,7 +9,7 @@
   <meta name="author" content="Theo Andersen Carton">
 
   
-  <meta name="description" content="To be good at using git, you need not only to learn it but you need to understand it. Git&#8217;s working seems like magic until you understand why &hellip;">
+  <meta name="description" content="After reading Ulrik Born&rsquo;s MSDN article on Adaptive Access Layers (AAL) and hearing him present it at my company, I thought it would be a nice &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +68,111 @@
   <header>
   
     
+      <h1 class="entry-title"><a href="/blog/2013/12/09/adaptive-access-layers-spike/">Adaptive Access Layers Spike</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-09T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After reading Ulrik Born&rsquo;s MSDN article on <a href="http://msdn.microsoft.com/en-us/magazine/dn451442.aspx">Adaptive Access Layers</a> (AAL) and hearing him present it at my company, I thought it would be a nice little exercise to start on a spike of an AAL framework.</p>
+
+<p>The AAL spike code can be found on: <a href="http://www.github.com/TheoAndersen/AdaptiveAccessLayerSpike">github.com/TheoAndersen/AdaptiveAccessLayerSpike</a></p>
+
+<p>The general idea is that every external dependency of the system as ex. database access, logging etc. is handled by an AAL-framework which dynamically creates the implementation of the interfaces you provide from your business logic, to use the external dependencies. So if you need a logging mechanism, you would create an interface with the right attributes to denote that its an interface providing access to the logger. The framework would then create an implementation for the interface and wire it up to the logging part of the framwork, without the code using the interface knowing about this.</p>
+
+<p><img class="center" src="/assets/aal-class-diagram.png"></p>
+
+<p>This class diagram shows the structure I&rsquo;ve used in the spike. The ITestLogWriter represents an interface created by some business logic. The implementation is dynamically created by the AAL code, which wires it up to the LogContract derived AAL class, which handles the actual logging.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[LogContract]</span>
+</span><span class='line'><span class="k">public</span> <span class="k">interface</span> <span class="n">ITestLogWriter</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="na">   [LogEntryContract]</span>
+</span><span class='line'>   <span class="kt">string</span> <span class="nf">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">,</span> <span class="kt">int</span> <span class="n">second</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is how an interface could look like. The implementation that the AAL framework would create to hook this interface would then look like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">TestLogWriterImpl</span> <span class="p">:</span> <span class="n">LogContract</span><span class="p">,</span> <span class="n">ITestLogWriter</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">,</span> <span class="kt">int</span> <span class="n">second</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="kt">object</span><span class="p">[]</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[</span><span class="m">2</span><span class="p">];</span>
+</span><span class='line'>        <span class="n">parameters</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">message</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">parameters</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">second</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="k">base</span><span class="p">.</span><span class="n">ExecuteImpl</span><span class="p">(</span><span class="n">MethodBase</span><span class="p">.</span><span class="n">GetCurrentMethod</span><span class="p">(),</span> <span class="n">parameters</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now this would be generated directly in MSIL code. As can be seen from the class diagram as well, the AdaptiveLayerBase implements an ExecuteImpl method which fits together with the standard IL code. This fits together with an abstract Execute method, which is what the specific AAL layers must implement to act on any message executed on an AAL interface.</p>
+
+<p>Now i wont post any crazy IL generating code here, you can look at the github repo yourself for the part i&rsquo;ve tried out, but it doesn&rsquo;t feel to me like very sturdy code. The method i used to find out what IL to write, was that i created the implementation in c# first and then used the &ldquo;ildasm&rdquo; tool to disassemble the dll and watch what IL code it compiled into, so that i could use that as a recipe for my implementation. Still its poor error handling you get when the generated assembly just doesn&rsquo;t work, which is also a good reason to keep the generated IL part as small and simple as possible, and keep the normal c# code doing the lifting.</p>
+
+<h2>Good reasoning behind an advanced implementation</h2>
+
+<p>Now I like the overall reasoning behind this approach, but I&rsquo;m not sure I like the actual solution. The positives are that you enforce seperation of the external dependencies behind interfaces, to make sure that the business logic isn&rsquo;t tangled to much along with other concerns. The interface without a compile time implementation is though a little special. It makes the wiring of all business logic with external dependencies dynamic, so that every request will go through several &lsquo;magic&rsquo; holes in the code all the time. Debugging will be kind of odd as the current position will disappear and (hopefully) appear the right place on the other side.</p>
+
+<p>I do think that the reasoning behind AAL of separating and generalizing/encapsulating external dependencies behind abstractions as interfaces are important in enterprise applications and that the referred anti-patterns are very real. Even though, it is though possible to achieve this if you continuously refactor and improve the code your working on. Much development seems opposed to continuous refactoring and generalization. Developers often just continue in the existing track, and dosen&rsquo;t think to refactor or change what theyr externding to make it better, making it necessary to come up with an architecture/framework like this up front. I think its impressive that Ulriks team has created this architecture and have extended it as much to really improve the productivity of theyr team, but i would optimally like a team to gradually mold a and continuously refactor a system to keep it easy to use and test, without having to create a framework with restrictions on how the developers have to work (even though its an internally developed framework). If we dont get developers to think critically on the code and refactor it, we will just have to create a new framwork to the business logic as well at some time, to keep them from messing that up, and so further.</p>
+
+<h4>Sources:</h4>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/magazine/dn451442.aspx">Adaptive Access Layers + Dependency Injection = Productivity on MSDN by Ulrik Born</a></li>
+<li><a href="http://www.github.com/TheoAndersen/AdaptiveAccessLayerSpike">Adaptive Access Layer Spike on Github</a></li>
+<li><a href="http://gertgregers.wordpress.com/2013/12/05/simple-adaptive-access-layer-helloworld-sample/">Simple Adaptive Access Layer Helloworld sample (using Roslyn)</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
       <h1 class="entry-title"><a href="/blog/2012/07/22/resources-for-understanding-git/">Resources for Understanding Git</a></h1>
       
       
@@ -85,7 +190,7 @@
   
 
 
-<time datetime="2012-07-22T00:00:00+02:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2012</time>
+<time datetime="2012-07-22T00:00:00+02:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -127,7 +232,7 @@
   
 
 
-<time datetime="2012-04-27T00:00:00+02:00" pubdate data-updated="true">Apr 27<span>th</span>, 2012</time>
+<time datetime="2012-04-27T00:00:00+02:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -168,7 +273,7 @@
   
 
 
-<time datetime="2011-10-18T00:00:00+02:00" pubdate data-updated="true">Oct 18<span>th</span>, 2011</time>
+<time datetime="2011-10-18T00:00:00+02:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -215,7 +320,7 @@ git rm &#8211;cached filename
   
 
 
-<time datetime="2011-06-07T00:00:00+02:00" pubdate data-updated="true">Jun 7<span>th</span>, 2011</time>
+<time datetime="2011-06-07T00:00:00+02:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -258,7 +363,7 @@ git rm &#8211;cached filename
   
 
 
-<time datetime="2011-02-15T00:00:00+01:00" pubdate data-updated="true">Feb 15<span>th</span>, 2011</time>
+<time datetime="2011-02-15T00:00:00+01:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -304,7 +409,7 @@ git rm &#8211;cached filename
   
 
 
-<time datetime="2010-11-14T00:00:00+01:00" pubdate data-updated="true">Nov 14<span>th</span>, 2010</time>
+<time datetime="2010-11-14T00:00:00+01:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -345,7 +450,7 @@ git rm &#8211;cached filename
   
 
 
-<time datetime="2010-06-23T00:00:00+02:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2010</time>
+<time datetime="2010-06-23T00:00:00+02:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -404,7 +509,7 @@ git rm &#8211;cached filename
   
 
 
-<time datetime="2010-03-30T00:00:00+02:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
+<time datetime="2010-03-30T00:00:00+02:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -444,7 +549,7 @@ git rm &#8211;cached filename
   
 
 
-<time datetime="2010-03-20T00:00:00+01:00" pubdate data-updated="true">Mar 20<span>th</span>, 2010</time>
+<time datetime="2010-03-20T00:00:00+01:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -484,58 +589,6 @@ git rm &#8211;cached filename
 
     </article>
   
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/19/solution-to-slow-git-bash-when-logged-in-as-a-domain-user/">Solution to Slow Git Bash When Logged in as a Domain User</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-19T00:00:00+01:00" pubdate data-updated="true">Mar 19<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Today i found that my newly installed git on my laptop at work was working pretty slow. 0.5 ~ 1sec delay on loading the git bash, and on every command. I logged in as a local user on the computer and the delay was gone.</p>
-
-<p>Searching the internet a bit, i found that git uses the default home, on my account set to be a network account. This ment that git would look in this directory all the time, causing the delay.</p>
-
-<p>To fix this i created a local user environment variable, overriding the default one, and setting it to %USERPROFILE% which points at c:\users[username].</p>
-
-<p><img src="/assets/slow_git_bash_1.png" alt="" /></p>
-
-<p>This makes git look the right place for the git.config.   <br />    <br />Next is that when you click the git bash shortcut, i opened on my default homedrive, which was a network connection.&#160; Looking at the properties for the shortcut it looks like this:</p>
-
-<p><img src="/assets/slow_git_bash_2.png" alt="" /></p>
-
-<p>Changing the &ldquo;Start in&rdquo; to c:\user[user], or any other place made the shortcut open much faster for me.</p>
-
-<p>Now my git bash is back and fast again :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -546,66 +599,7 @@ git rm &#8211;cached filename
 </div>
 <aside class="sidebar">
   
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
     
-      <li class="post">
-        <a href="/blog/2012/07/22/resources-for-understanding-git/">Resources for understanding git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/27/using-unit-tests-in-ios-development/">Using unit tests in IOS development</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/18/adding-items-that-dont-seem-to-want-to-be-ignored-to-gitignore-anyway/">Ignoring already committed files</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/06/07/james-shores-lets-play-tdd-screencasts/">James Shore&#8217;s - Lets Play TDD screencasts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/02/15/kent-beck-tdd-screencasts/">Kent Beck TDD screencasts</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/theoandersen">@theoandersen</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'theoandersen',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-
   
 </aside>
 
