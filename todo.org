@@ -1,0 +1,65 @@
+* Idea for showing a refactoring in a blog post
+Make a sort of code-field, where you have arrows on the side, with explaining text underneith and can switch left or right to show the refactorings of the code
+
+  ---------------
+< |             | >
+< |  <code>     | >
+  _______________
+ (explaining text)
+
+- Maybe make it possible to use arrow keys to switch left and right in the refactoring
+- Make the refactored changes bold
+- Maybe tabs with different files, or just keep them above each other
+- Some easy way of keeping the whole refactoring in a file.. uhmm.. maybe a small git repo? (perhaps not portable enough)
+
+* Idea´s for future posts
+** -=NoSQL / RavenDB topics=-
+*** About my professional master thesis on RavenDB (A case study of the document database RavenDB)
+About what i did, when i did it
+And what i found in a heli overview
+*** NoSQL - what a shitty name
+Tag udsnit stort set fra min rapport og forklar hvorfor nosql er et dårligt navn.. nonRel?
+*** RavenDB Architecture
+*** Document database modelling versus relational modelling
+Denormalisering i RavenDB versus normalisering i relationel databas
+*** NoSQL - Integration versus application databas
+** -=Process=-
+*** Running Scrum by the book - Noget om hvorfor jeg tit er irritereet på scrum ("Vi kører scrum efter bogen")
+*** Keep your eye on the ball - Value proposition anyone?
+*** If you don't stand up to your customers, you're gonna loose them
+** -=Better Code/Common antipatterns=-
+*** Classofobia? The fear of creating new classes
+Hvorfor faen virker det somom at udviklere ikke bryde sig om at lave nye klasser?
+- Er det objekter de ikke kan lide?
+- Er det filer?
+- Er det fordi de føler at man skal vide mere om systemet for at lave klasser istedet for nye metoder?
+
+De fleste kan aller bedst lide bare at lave en ny funktion i samme dur som noget eksisterende.
+Det kan gøre at man ender med antipatterns som er fulde af få meget store og meget statiske filer, hvilket er svært at håndtere, udvide samt teste, samt versionere,
+fordi man oftere ændrer i de samme filer.
+
+_Reasons for creating a new class_
+
+*** The Helper anti-pattern (utility pattern)
+ - _Helper files_
+   A file thats called helper, and includes a lot of different
+
+it's all about context.. a file of any type, with methods that dosen't align up with the purpose of the class is a problem, it becomes a problem and a trashcan for all kinds of functionality.
+
+Sources:
+http://scottboring.com/the-helper-anti-pattern/
+http://blogs.msdn.com/b/nickmalik/archive/2005/09/06/461404.aspx
+http://blogs.msdn.com/b/nickmalik/archive/2005/09/07/462054.aspx
+
+*** The Layer anti-pattern
+ - _Files that end with the name layer (OrderBLL.cs, OrderLayer.cs)_
+   A layer in your app shouln't be constricted to a single file -
+     -It makes the overall behavious of your application hidden from the directory structure, as all you can see is that its about the order
+     -Makes dependencies a mess, as every method either has to generate/fetch its dependencies by it self in the function, or you have to generalize dependencies across in the constructor
+     -Basically makes people not want to create private methods, as they will get kind of lost in the file (does this private method belong to this public class or another?)
+   Possible solutions: Use a command like pattern structure, where your layer is a directory if you will, and a class consists of a business command/transaction that can be executed
+
+Business command
+
+Uncle bobs business command
+*** Internal classes
