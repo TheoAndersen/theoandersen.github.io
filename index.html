@@ -142,22 +142,7 @@
 
 <p>In the next blogpost I&rsquo;ll describe the basic differences in the conceptual architecture differences behind the relational database and a document database as RavenDB, which will uncover this part a bit more.</p>
 
-<!-- Modelling - To normalize or not -->
-
-
-<!-- --------------------------- -->
-
-
-<!-- The architecture of the two databases lends each other to completely different approaches, for what modelling of data is concerned. -->
-
-
-<!-- In the relationel model we pull data apart into logical pieces, which references each-other by constraints, for which we can use to query across and join in complex ways to achieve and gather/join the data we want. In the document database theres no such thing as a system based join. The data is modelled in collections/aggregates of data, which can be more complex than a simple two-dimensional table structure, but any two collections have no direct enforced link/constraint to each other and there's no system dosen't include any join mechanism. -->
-
-
 <h4>Sources</h4>
-
-<!--- [Adaptive Access Layers + Dependency Injection = Productivity on MSDN by Ulrik Born](http://msdn.microsoft.com/en-us/magazine/dn451442.aspx)-->
-
 
 <ul>
 <li>D. Pritchett. Base: An acid alternative. Queue, 6(3):48–55, 2008.</li>
@@ -167,39 +152,6 @@
 
 
 <p>Just search for &ldquo;NoSQL&rdquo;, &ldquo;Acid&rdquo; or &ldquo;Base&rdquo; on Google :)</p>
-
-<!-- Now theres a reason to this -->
-
-
-
-
-<!-- Performance and optimization -->
-
-
-<!-- ---------------------------- -->
-
-
-
-
-<!-- Analysis and ad hoc querying (reporting) -->
-
-
-<!-- ----------------------------- -->
-
-
-
-
-<!-- <\!--- Using relational databases users are encouraged to normalise the model, but how is data optimally modelled in a document database as RavenDB? -\-> &#8211;>
-
-
-<!-- <\!-- - Performance is important in the chosen case, and with the right indices the system performs fine with one million rows in a table. How does larger amounts of data scale in RavenDB? -\-> &#8211;>
-
-
-<!-- <\!-- - Error handling and analysis is done in the system by executing ad hoc queries to the system. How does RavenDB support this kind of custom queries? -\-> &#8211;>
-
-
-<!-- <\!-- - An extra type of inf ormation is added which is not simply 1 dimensional, this means creating a new table in the relational model. How is this handled in RavenDB?-\-> &#8211;>
-
 </div>
   
   
