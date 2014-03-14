@@ -43,10 +43,11 @@ In the next blogpost I'll describe the basic differences in the conceptual archi
 
 #### Sources
 <!--- [Adaptive Access Layers + Dependency Injection = Productivity on MSDN by Ulrik Born](http://msdn.microsoft.com/en-us/magazine/dn451442.aspx)-->
--  D. Pritchett. Base: An acid alternative. Queue, 6(3):48–55, 2008.
-- N. Leavitt. Will nosql databases live up to their promise? Computer, IEEE, 43(2):12–14, 2010.
-- S. Gilbert and N. Lynch. Brewer’s conjecture and the feasibility of con- sistent, available, partition-tolerant web services. ACM SIGACT News, 33(2):51–59, 2002.
-
+<ul>
+<li>D. Pritchett. Base: An acid alternative. Queue, 6(3):48–55, 2008.</li>
+<li>N. Leavitt. Will nosql databases live up to their promise? Computer, IEEE, 43(2):12–14, 2010.</li>
+<li>S. Gilbert and N. Lynch. Brewer’s conjecture and the feasibility of con- sistent, available, partition-tolerant web services. ACM SIGACT News, 33(2):51–59, 2002.</li>
+</ul>
 Just search for "NoSQL", "Acid" or "Base" on Google :)
 
 
