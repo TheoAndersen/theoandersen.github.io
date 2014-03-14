@@ -13,6 +13,11 @@ Make a sort of code-field, where you have arrows on the side, with explaining te
 - Some easy way of keeping the whole refactoring in a file.. uhmm.. maybe a small git repo? (perhaps not portable enough)
 
 * Idea´s for future posts
+** -=Git/Tfs=-
+*** Why i don't like TFS but like Git
+- Points that i can do in TFS, can i do them in git? how
+- Points i can in git but cant in TFS
+- How do i identify code versions that has been changed the most.. (files at first)
 ** -=NoSQL / RavenDB topics=-
 *** About my professional master thesis on RavenDB (A case study of the document database RavenDB)
 About what i did, when i did it
@@ -27,6 +32,7 @@ Denormalisering i RavenDB versus normalisering i relationel databas
 *** Running Scrum by the book - Noget om hvorfor jeg tit er irritereet på scrum ("Vi kører scrum efter bogen")
 *** Keep your eye on the ball - Value proposition anyone?
 *** If you don't stand up to your customers, you're gonna loose them
+*** Agile and Flaccid scrum
 ** -=Better Code/Common antipatterns=-
 *** Classofobia? The fear of creating new classes
 Hvorfor faen virker det somom at udviklere ikke bryde sig om at lave nye klasser?
