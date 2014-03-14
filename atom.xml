@@ -4,7 +4,7 @@
   <title><![CDATA[Theo Andersen Carton]]></title>
   <link href="http://TheoAndersen.github.io/atom.xml" rel="self"/>
   <link href="http://TheoAndersen.github.io/"/>
-  <updated>2014-03-14T20:38:03+01:00</updated>
+  <updated>2014-03-14T20:42:54+01:00</updated>
   <id>http://TheoAndersen.github.io/</id>
   <author>
     <name><![CDATA[Theo Andersen Carton]]></name>
@@ -16,10 +16,10 @@
   <entry>
     
     <title type="html"><![CDATA[My master thesis on RavenDB in short(ish)]]></title>
-    <link href="http://TheoAndersen.github.io/blog/2014/02/13/a-case-study-of-the-document-database-ravendb/"/>
+    <link href="http://TheoAndersen.github.io/blog/2014/02/13/my-master-thesis-on-ravendb-in-short-part-1/"/>
     
     <updated>2014-02-13T00:00:00+01:00</updated>
-    <id>http://TheoAndersen.github.io/blog/2014/02/13/a-case-study-of-the-document-database-ravendb</id>
+    <id>http://TheoAndersen.github.io/blog/2014/02/13/my-master-thesis-on-ravendb-in-short-part-1</id>
     
     <content type="html"><![CDATA[<p>Last year I finished a professional master in Software Construction, in which I wrote a thesis named &ldquo;A case study of the document database RavenDB&rdquo;. Like most enterprise developers I know, I&rsquo;ve done pretty much all of my work using relational databases, but I continue to be intrigued by the differences of NoSQL databases compared to the well known relational and wanted to investigate these differences further, which were the prime motivation for choosing this topic. I admit that I did a crucial error by writing it in my native language danish, because it means that not many are able to read it &ndash; you&rsquo;re welcome to try and google translate it ;)). This is though the reasoning behind a couple of blog post I mean to write, reporting the main point of the findings on this blog.</p>
 
