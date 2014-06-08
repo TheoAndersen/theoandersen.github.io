@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Calling ASP.NET AJAX Web-services From JQuery - Theo Andersen Carton</title>
+  <meta name="author" content="Theo Andersen Carton">
+
+  
+  <meta name="description" content="I recently looked into calling ASP.NET Ajax web-services from JQuery, and it&rsquo;s actually not that hard.
+The ASP.NET Ajax web-service
+To create a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TheoAndersen.github.io/blog/2009/10/11/calling-aspnet-ajax-web-services-from-jquery">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Theo Andersen Carton" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17815436-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner">
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TheoAndersen.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Calling ASP.NET AJAX Web-services From JQuery</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-11T00:00:00+02:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I recently looked into calling ASP.NET Ajax web-services from JQuery, and it&rsquo;s actually not that hard.</p>
+<h2>The ASP.NET Ajax web-service</h2>
+<p>To create a client script enabled web-service, add the [ScriptService] to the web service class. This makes sure that the methods can be called from client script and also makes the returntype a JSON.</p>
+<pre class="brush: csharp; gutter: false">[WebService(Namespace = "http://tempuri.org/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+[ScriptService]
+public class AjaxWebservice : System.Web.Services.WebService
+{
+    [WebMethod]
+    public string HelloWorld()
+    {
+        return "Hello World - " + DateTime.Now.ToShortTimeString();
+    }
+
+    [WebMethod]
+    public object HelloObject(int id)
+    {
+        return new { Id = id, Success = true, Text="&lt;b&gt;It went well!&lt;/b&gt;" };
+    }
+}</pre>
+<p>Note that the returned object in the last webservice method, is converted to a JSON object, which we will see shortly can be used very easily in the client.</p>
+<h2>The client-side JQuery ajax call</h2>
+<p>Now we have the ajax web service done, in .net manner, we would like to use JQuery&rsquo;s easy and simple interface to consume it.</p>
+<p>The default way to create an asynchronous client side call using JQuery is via an $.ajax() call <br />( see <a href="http://docs.jquery.com/Ajax">http://docs.jquery.com/Ajax</a> for more details on this)</p>
+<p>The client-side script able to consume the HelloObject webmethod, looks like this:</p>
+<pre class="brush: js; gutter: false">$.ajaxSetup({
+  type: "POST",
+  contentType: "application/json; charset=utf-8",
+  data: "{}",
+  dataFilter: function(data) {
+    var msg;
+
+    if (typeof (JSON) !== 'undefined' &amp;&amp;
+    typeof (JSON.parse) === 'function')
+      msg = JSON.parse(data);
+    else
+      msg = eval('(' + data + ')');
+
+    if (msg.hasOwnProperty('d'))
+      return msg.d;
+    else
+      return msg;
+  }
+});
+
+$.ajax({
+  url: "AjaxWebservice.asmx/HelloObject",
+  data: "{id:3}",
+  success: function(msg) {
+    if (msg.Success) {
+      alert("yes: " + msg.Text + "(" + msg.Id + ")");
+    }
+    else {
+      alert("nop: " + msg.Text + "(" + msg.Id + ")");
+    }
+  }
+});</pre>
+<p>The first $.ajaxSetup() part, sets the default values for all subsequent ajax calls, and the last $.ajax() call makes the asynchronous request to the server. The dataFilter function is supposed to even out some of the variations, different version of net handle JSON, but i haven&rsquo;t gone that much in detail with it. ( go here to read more about it : <a href="http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/">http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/</a>)</p>
+<p>This example calls the the webserver with an id having the value two, which then responds with a JSON object. When the client side successfully completes the request, it creates an alertbox from the data in the returned JSON object.</p>
+<p>Sources: <br /><a href="http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/">http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/</a> <br /><a href="http://encosia.com/2008/06/05/3-mistakes-to-avoid-when-using-jquery-with-aspnet-ajax/">http://encosia.com/2008/06/05/3-mistakes-to-avoid-when-using-jquery-with-aspnet-ajax/</a> <br /><a href="http://docs.jquery.com/Ajax">http://docs.jquery.com/Ajax</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Theo Andersen Carton</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-11T00:00:00+02:00" pubdate data-updated="true"></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://TheoAndersen.github.io/blog/2009/10/11/calling-aspnet-ajax-web-services-from-jquery/" data-via="theo_andersen" data-counturl="http://TheoAndersen.github.io/blog/2009/10/11/calling-aspnet-ajax-web-services-from-jquery/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/09/24/git-e28093-fast-distributed-code-versioning/" title="Previous Post: Git - Fast distributed code versioning">&laquo; Git - Fast distributed code versioning</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/03/19/solution-to-slow-git-bash-when-logged-in-as-a-domain-user/" title="Next Post: Solution to slow Git bash when logged in as a domain user">Solution to slow Git bash when logged in as a domain user &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Theo Andersen Carton <br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, customized with <a href="https://github.com/mjhea0/whiterspace">whiterspace</a>.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'theoandersengithubio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TheoAndersen.github.io/blog/2009/10/11/calling-aspnet-ajax-web-services-from-jquery/';
+        var disqus_url = 'http://TheoAndersen.github.io/blog/2009/10/11/calling-aspnet-ajax-web-services-from-jquery/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

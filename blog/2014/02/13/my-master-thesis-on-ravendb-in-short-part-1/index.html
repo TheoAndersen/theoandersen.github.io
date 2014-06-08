@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Master Thesis on RavenDB in Short(ish) - Theo Andersen Carton</title>
+  <meta name="author" content="Theo Andersen Carton">
+
+  
+  <meta name="description" content="Last year I finished a professional master in Software Construction, in which I wrote a thesis named &ldquo;A case study of the document database &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://TheoAndersen.github.io/blog/2014/02/13/my-master-thesis-on-ravendb-in-short-part-1">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Theo Andersen Carton" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17815436-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner">
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:TheoAndersen.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">My Master Thesis on RavenDB in Short(ish)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-13T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Last year I finished a professional master in Software Construction, in which I wrote a thesis named &ldquo;A case study of the document database RavenDB&rdquo;. Like most enterprise developers I know, I&rsquo;ve done pretty much all of my work using relational databases, but I continue to be intrigued by the differences of NoSQL databases compared to the well known relational and wanted to investigate these differences further, which were the prime motivation for choosing this topic. I admit that I did a crucial error by writing it in my native language danish, because it means that not many are able to read it &ndash; you&rsquo;re welcome to try and google translate it ;)). This is though the reasoning behind a couple of blog post I mean to write, reporting the main point of the findings on this blog.</p>
+
+<p>The project was to investigate the .NET document database RavenDB on four main points, comparing it to the relational database Microsoft Sql Server. This was done by building a prototype application and testing selected view-points on both a version of the application using RavenDB and one using Microsoft SQL Server.</p>
+
+<p>In short the points of investigating which the prototype was implemented based on was:</p>
+
+<ul>
+<li>Modelling</li>
+<li>Performance</li>
+<li>Ad-hoc querying</li>
+<li>Extendability</li>
+</ul>
+
+
+<p>This will be a series of multiple blog posts, but the necessary place too start will be too sum up some background theory on NoSQL which I&rsquo;ll skip over pretty quickly because there&rsquo;s so much material about this everywhere on the web. But the posts that follows will hopefully be a bit more concrete. I hope that this will provide yet another little bit of info into the differences between a typical document database as RavenDB and a relational database.</p>
+
+<h2>NoSql &ndash; what a confusing name</h2>
+
+<p>&ldquo;NoSql&rdquo; have become a widely adopted term meaning &ldquo;Any database which is not the normal, big old relational databases as Sql Server, Oracle, MySql etc.&rdquo;. But the name is misleading as it&rsquo;s not at all about <em>not</em> using SQL, but more about using a different model for storing the data than the relational model and focusing less on being fully transactional and more on performance, horizontal scaling (more servers) and easier development (as having a dynamic schema).</p>
+
+<p>All NoSQL database approach and handle these aspects differently, but some categorization based on the chosen model can be made by categorizing them in; key-value store, document, graph and column stores.</p>
+
+<p>I&rsquo;ve chosen to investigate RavenDB which is a document database, because I think modeling data in documents isn&rsquo;t that far off from  the typical enterprise scenarios i normally work with using relational databases. And as I work professionally with .NET, RavenDB was the obvious choice for investigation because of its tight integration to .NET, through a Linq supported API.</p>
+
+<h2>BASE &ndash; It&rsquo;s anything but ACID</h2>
+
+<p>Where ACID is a familiar term describing transactional databases (as ex relational), its counterpart BASE describes something that&rsquo;s Basically available, Soft state, and Eventually Consistent. The main thing here is that you can get better performant systems, if you don&rsquo;t need the system to be fully transactional, consistent or available all the time. It also makes it much easier to make systems that scales better.</p>
+
+<p align="center">
+  <img src="/assets/TeoriAcidBase.png" width="500" style="valign: center"></img>
+</p>
+
+
+<p>As opposed to the relational databases, which by default tries to enforce strict transactionality on everything it stores, most NoSQL databases are known for supporting BASE and not having ACID transactions. But this does not have to be one or the other. People usually think of this as being something that&rsquo;s ultimately chosen by choosing a particular database, but it doesn&rsquo;t have to be. The architecture of a relational database makes it transactional by default but it is possible to model BASE in relational systems. Its what we do when we create performance/buffer -tables and create batched jobs that update these tables every once in a while. By default RavenDB supports simple reads and writes as ACID transactions but more complex queries are BASE.</p>
+
+<p>In the next blogpost I&rsquo;ll describe the basic differences in the conceptual architecture differences behind the relational database and a document database as RavenDB, which will uncover this part a bit more.</p>
+
+<h4>Sources</h4>
+
+<ul>
+<li>D. Pritchett. Base: An acid alternative. Queue, 6(3):48–55, 2008.</li>
+<li>N. Leavitt. Will nosql databases live up to their promise? Computer, IEEE, 43(2):12–14, 2010.</li>
+<li>S. Gilbert and N. Lynch. Brewer’s conjecture and the feasibility of con- sistent, available, partition-tolerant web services. ACM SIGACT News, 33(2):51–59, 2002.</li>
+</ul>
+
+
+<p>Just search for &ldquo;NoSQL&rdquo;, &ldquo;Acid&rdquo; or &ldquo;Base&rdquo; on Google :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Theo Andersen Carton</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-13T00:00:00+01:00" pubdate data-updated="true"></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://TheoAndersen.github.io/blog/2014/02/13/my-master-thesis-on-ravendb-in-short-part-1/" data-via="theo_andersen" data-counturl="http://TheoAndersen.github.io/blog/2014/02/13/my-master-thesis-on-ravendb-in-short-part-1/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/09/adaptive-access-layers-spike/" title="Previous Post: Adaptive Access Layers spike">&laquo; Adaptive Access Layers spike</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Theo Andersen Carton <br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, customized with <a href="https://github.com/mjhea0/whiterspace">whiterspace</a>.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'theoandersengithubio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://TheoAndersen.github.io/blog/2014/02/13/my-master-thesis-on-ravendb-in-short-part-1/';
+        var disqus_url = 'http://TheoAndersen.github.io/blog/2014/02/13/my-master-thesis-on-ravendb-in-short-part-1/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
