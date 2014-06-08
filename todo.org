@@ -1,3 +1,9 @@
+* Remember
+- It needs gem install bundler
+- It needs Gem install jekyll
+rake preview
+rake generate
+use pow (search for it) to make the local webserver always there
 * Idea for showing a refactoring in a blog post
 Make a sort of code-field, where you have arrows on the side, with explaining text underneith and can switch left or right to show the refactorings of the code
 
@@ -18,8 +24,35 @@ Make a sort of code-field, where you have arrows on the side, with explaining te
 - Points that i can do in TFS, can i do them in git? how
 - Points i can in git but cant in TFS
 - How do i identify code versions that has been changed the most.. (files at first)
+
+More about Microsofts comparisons of Git vs TFS
+(much of it is based on Microsofts use of git - not git it self)
+http://msdn.microsoft.com/en-us/library/ms181368.aspx#tfvc_or_git_summary
+
+**** Git vs TFS
+|-----------------+---------------+-------------------------|
+|                 | =GIT=         | =TFS=                   |
+|-----------------+---------------+-------------------------|
+| Branching       | project-based | folder-based            |
+|-----------------+---------------+-------------------------|
+| local branches  | Yes           | No                      |
+|-----------------+---------------+-------------------------|
+| Most operations | local only    | connected to TFS server |
+|-----------------+---------------+-------------------------|
+| VCS model       | Distributed   | Centralized             |
+|-----------------+---------------+-------------------------|
+|                 |               |                         |
+
+**** Points to investigate
+***** A TFS Merge squashes commits to one new one created in the new branch
+***** Annotate/Blame
+***** Rollback one or multiple items
+***** Cherry pick commits when merging
+***** "Baseless" merges (is there such a thing in git at all - dosen't it just work?)
+***** (new) Ability to easily go forward/backwards with versioning of a file (+ keep position)
+
 ** -=NoSQL / RavenDB topics=-
-*** About my professional master thesis on RavenDB (A case study of the document database RavenDB)
+*** DONE About my professional master thesis on RavenDB (A case study of the document database RavenDB)
 About what i did, when i did it
 And what i found in a heli overview
 *** NoSQL - what a shitty name
@@ -69,3 +102,23 @@ Business command
 
 Uncle bobs business command
 *** Internal classes
+Theyr not all evil.. Can actually be usefull
+
+example: RavenDB Index'es and Model an index works on
+
+Command pattern.. request response as internal classes
+*** Controlling your steps using TDD
+Explain the steps again
+but include help from James Shore and Kent Beck
+
+Explain why it should be like this?
+
+1) Create a test - invent the API of your choice
+   It might go red
+   Or it might not compile
+
+2) Make it compile and get green fast
+   Don't do it the nice way - hard code.. commit the sins you want to get green
+
+3) Refactor it to remove duplication, make it more general. nicer
+   Keep the green but remove the duplication (also between testcase and code)
