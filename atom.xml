@@ -4,7 +4,7 @@
   <title><![CDATA[Theo Andersen Carton]]></title>
   <link href="http://TheoAndersen.github.io/atom.xml" rel="self"/>
   <link href="http://TheoAndersen.github.io/"/>
-  <updated>2014-03-14T20:50:17+01:00</updated>
+  <updated>2014-06-08T20:27:52+02:00</updated>
   <id>http://TheoAndersen.github.io/</id>
   <author>
     <name><![CDATA[Theo Andersen Carton]]></name>
@@ -14,13 +14,10 @@
 
   
   <entry>
-    
-    <title type="html"><![CDATA[My master thesis on RavenDB in short(ish)]]></title>
+    <title type="html"><![CDATA[My Master Thesis on RavenDB in Short(ish)]]></title>
     <link href="http://TheoAndersen.github.io/blog/2014/02/13/my-master-thesis-on-ravendb-in-short-part-1/"/>
-    
     <updated>2014-02-13T00:00:00+01:00</updated>
     <id>http://TheoAndersen.github.io/blog/2014/02/13/my-master-thesis-on-ravendb-in-short-part-1</id>
-    
     <content type="html"><![CDATA[<p>Last year I finished a professional master in Software Construction, in which I wrote a thesis named &ldquo;A case study of the document database RavenDB&rdquo;. Like most enterprise developers I know, I&rsquo;ve done pretty much all of my work using relational databases, but I continue to be intrigued by the differences of NoSQL databases compared to the well known relational and wanted to investigate these differences further, which were the prime motivation for choosing this topic. I admit that I did a crucial error by writing it in my native language danish, because it means that not many are able to read it &ndash; you&rsquo;re welcome to try and google translate it ;)). This is though the reasoning behind a couple of blog post I mean to write, reporting the main point of the findings on this blog.</p>
 
 <p>The project was to investigate the .NET document database RavenDB on four main points, comparing it to the relational database Microsoft Sql Server. This was done by building a prototype application and testing selected view-points on both a version of the application using RavenDB and one using Microsoft SQL Server.</p>
@@ -69,17 +66,13 @@
 
 <p>Just search for &ldquo;NoSQL&rdquo;, &ldquo;Acid&rdquo; or &ldquo;Base&rdquo; on Google :)</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Adaptive Access Layers spike]]></title>
+    <title type="html"><![CDATA[Adaptive Access Layers Spike]]></title>
     <link href="http://TheoAndersen.github.io/blog/2013/12/09/adaptive-access-layers-spike/"/>
-    
     <updated>2013-12-09T00:00:00+01:00</updated>
     <id>http://TheoAndersen.github.io/blog/2013/12/09/adaptive-access-layers-spike</id>
-    
     <content type="html"><![CDATA[<p>After reading Ulrik Born&rsquo;s MSDN article on <a href="http://msdn.microsoft.com/en-us/magazine/dn451442.aspx">Adaptive Access Layers</a> (AAL) and hearing him present it at my company, I thought it would be a nice little exercise to start on a spike of an AAL framework.</p>
 
 <p>The AAL spike code can be found on: <a href="http://www.github.com/TheoAndersen/AdaptiveAccessLayerSpike">github.com/TheoAndersen/AdaptiveAccessLayerSpike</a></p>
@@ -149,50 +142,38 @@
 </ul>
 
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Resources for understanding git]]></title>
+    <title type="html"><![CDATA[Resources for Understanding Git]]></title>
     <link href="http://TheoAndersen.github.io/blog/2012/07/22/resources-for-understanding-git/"/>
-    
     <updated>2012-07-22T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2012/07/22/resources-for-understanding-git</id>
-    
     <content type="html"><![CDATA[<p>To be good at using git, you need not only to learn it but you need to understand it. Git&#8217;s working seems like magic until you understand why it does what it does.</p>
 <p>This is the three best resources i&#8217;ve found for understanding how git works.&nbsp;I&#8217;ve you use git and don&#8217;t know these, i suggest you take a look.&nbsp;</p>
 <p><strong>The Git Parable&nbsp;</strong>- (blogpost:&nbsp;<a title="http://tom.preston-werner.com/2009/05/19/the-git-parable.html" href="http://tom.preston-werner.com/2009/05/19/the-git-parable.html">http://tom.preston-werner.com/2009/05/19/the-git-parable.html</a>)<br />Tom Preston-Werner has written a great blogpost describing how you might come to design a VCS like git. Now this is a made up story, but provides insights into the reasoning on the design &nbsp;for git.&nbsp;</p>
 <p><strong>Git for Ages 5 and Up</strong> - (presentation: <a title="http://www.youtube.com/watch?v=YwIwi80bXX4" href="http://www.youtube.com/watch?v=YwIwi80bXX4">http://www.youtube.com/watch?v=YwIwi80bXX4</a>)<br />As you probably already know, git works internally with its commits in a graph-structure. This presentation explains and runs through examples in git while illustrating what git does using Tinker Toys. This may sound weird but is actually a great way to understand git&#8217;s internal structure.</p>
 <p><strong>Think Like A Git</strong>&nbsp;- (website:&nbsp;<a title="http://think-like-a-git.net/" href="http://think-like-a-git.net/">http://think-like-a-git.net/</a>)<br />A site that more directly describes git for &#8220;Advances beginners&#8221;.</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Using unit tests in IOS development]]></title>
+    <title type="html"><![CDATA[Using Unit Tests in IOS Development]]></title>
     <link href="http://TheoAndersen.github.io/blog/2012/04/27/using-unit-tests-in-ios-development/"/>
-    
     <updated>2012-04-27T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2012/04/27/using-unit-tests-in-ios-development</id>
-    
     <content type="html"><![CDATA[<p>Using unit tests in XCode you have the posibility to have two test targets (sub-projects) set up; one for <em>logic tests</em> and one for <em>application tests</em>. So whats the difference?</p>
 <p><em>Logic tests</em> run without the Application running, so you wont be able to reach your app-delegate or anything UI related, but you will be able to test POOC&#8217;s (Plain Old Obj-C Classes). The <em>Application Tests</em> target, will start up the simulator and use it to run your unit tests.</p>
 <p>When i develop, i normally use the logic tests target for the classes providing domain behaviour. Not having to start up the simulator makes theses tests fast to run, making the feedback cycle shorter and you always want as short a feedback cycle as you can get.&nbsp;So when implementing a new feature i start up with the base domain behaviour and make it run with the logic tests. I then i move to the GUI, which uses this new feature and implement it with tests in the Application tests target. With this working i can then wire up the nibs or similar and start up the simulator to check that the feature works as it should.</p>
 <p>It did initially seem a bit odd to have two unit test targets, but being that the one needs the simulator to run it makes sense.</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Ignoring already committed files]]></title>
+    <title type="html"><![CDATA[Ignoring Already Committed Files]]></title>
     <link href="http://TheoAndersen.github.io/blog/2011/10/18/adding-items-that-dont-seem-to-want-to-be-ignored-to-gitignore-anyway/"/>
-    
     <updated>2011-10-18T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2011/10/18/adding-items-that-dont-seem-to-want-to-be-ignored-to-gitignore-anyway</id>
-    
     <content type="html"><![CDATA[<p>Ever added a file to .gitignore and found that it still kept being added to the index? Well this is because git will only ignore files not currently under source control, or only files that its not already tracking.</p>
 
 <p>To fix this, tell git to stop tracking the file:
@@ -204,17 +185,13 @@ git rm &#8211;cached filename
 
 <p>source: <a href="http://stackoverflow.com/questions/1139762/gitignore-file-not-ignoring">stackoverflow</a></p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[James Shore's - Lets Play TDD screencasts]]></title>
+    <title type="html"><![CDATA[James Shore's - Lets Play TDD Screencasts]]></title>
     <link href="http://TheoAndersen.github.io/blog/2011/06/07/james-shores-lets-play-tdd-screencasts/"/>
-    
     <updated>2011-06-07T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2011/06/07/james-shores-lets-play-tdd-screencasts</id>
-    
     <content type="html"><![CDATA[<p>I recently discovered James Shore&#8217;s most excellent &#8220;Lets Play TDD&#8221; series. It&#8217;s&nbsp;a series of screencasts all of around 15 minuttes, which shows the building of a java application from the start with TDD - and this live, with all the choices and hick-ups and whatever included.&nbsp;</p>
 <p>I&#8217;m only just reached episode 22 so far, and he&#8217;s made over a 100 at the time of writing this post. I will highly recommend this to anyone that wants to learn more about TDD in a real project.</p>
 <p>As with Kent Becks TDD screencasts, its always great to see the different styles of TDD, i find it a great way to learn more. And James seems to almost produce episodes faster than i have time to watch them :).</p>
@@ -222,17 +199,13 @@ git rm &#8211;cached filename
 <p>Links to all the posts: <a href="http://jamesshore.com/Blog/Lets-Play">http://jamesshore.com/Blog/Lets-Play</a>/</p>
 <p>..great stuff</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Kent Beck TDD screencasts]]></title>
+    <title type="html"><![CDATA[Kent Beck TDD Screencasts]]></title>
     <link href="http://TheoAndersen.github.io/blog/2011/02/15/kent-beck-tdd-screencasts/"/>
-    
     <updated>2011-02-15T00:00:00+01:00</updated>
     <id>http://TheoAndersen.github.io/blog/2011/02/15/kent-beck-tdd-screencasts</id>
-    
     <content type="html"><![CDATA[<p>A good resource for anybody wanting to learn more about Test Driven Development, is the 4 screencasts by Kent Beck, which can be bought from The Pragmatic Bookshelf site.   <br /><a href="http://pragprog.com/screencasts/v-kbtdd/test-driven-development">http://pragprog.com/screencasts/v-kbtdd/test-driven-development</a></p>
 <p>This is Kent Beck describing the workflow he uses when doing TDD and is a great way to learn a bit more about it.</p>
 <p>Here&rsquo;s Mark Needham&rsquo;s comments of the screencasts:   <br /><a href="http://www.markhneedham.com...kent-becks-test-driven-development-screencasts/">http://www.markhneedham.com&#8230;kent-becks-test-driven-development-screencasts/</a></p>
@@ -243,33 +216,25 @@ git rm &#8211;cached filename
 <li>Kent tries to <em>Call hits shots</em>, when running the unit tests, meaning that he tries to predict if the test is going to evaluate to red or green, as a exercise when TDD&rsquo;ing. </li>
 </ul>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Using unit-tests to shorten the feedback cycle]]></title>
+    <title type="html"><![CDATA[Using Unit-tests to Shorten the Feedback Cycle]]></title>
     <link href="http://TheoAndersen.github.io/blog/2010/11/14/using-unit-tests-to-shorten-the-feedback-cycle/"/>
-    
     <updated>2010-11-14T00:00:00+01:00</updated>
     <id>http://TheoAndersen.github.io/blog/2010/11/14/using-unit-tests-to-shorten-the-feedback-cycle</id>
-    
     <content type="html"><![CDATA[<p>The speed of development can be measured in how long it takes to write code, and then how long it takes to test that it works.</p>
 <p>Now the normal way of testing is running the system and poke around in the area of the change, to confirm that the change works as it should. This can be very slow if you have to enter multiple hierarchy&#8217;s&nbsp; of nested pages or because the system simply takes a while to load and enter. This is where unit tests can be of help.</p>
 <p>Even though you don&rsquo;t buy into the whole idea of covering everything with unit-tests, shortening the feedback cycle will shorten the time i takes to find out if your change works as it should, and this can be helped by testing through a unit-test instead of though the actual system.</p>
 <p>I experienced this my self, when building a component that would allow other systems to integrate data our. In this case every request needed to convert input data, validate it, run validation against another external source (returned as json), and then save in the database. Now in this case, i found that creating simple unit tests, for testing the parts allowed me to build this more in component, and much faster, as i was shortening the feedback cycle. Now not every piece of code is straight forward to unit test. But at least evaluating the quickest/easiest way to test a piece of code, should be on every pragmatic programmers backbone.</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[A very basic unit test]]></title>
+    <title type="html"><![CDATA[A Very Basic Unit Test]]></title>
     <link href="http://TheoAndersen.github.io/blog/2010/06/23/the-most-basic-unit-test/"/>
-    
     <updated>2010-06-23T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2010/06/23/the-most-basic-unit-test</id>
-    
     <content type="html"><![CDATA[<p>Today i realized what the most basic form of a unit-test is.</p>
 
 <p>It&rsquo;s this:</p>
@@ -293,32 +258,24 @@ git rm &#8211;cached filename
 
 <p>Now this is a stupid example yes, but the testing mindset is there. The best solution, and next step would then be to have a unit test check this, and enforce it automatically instead.</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[VS2008 .suo file rant]]></title>
+    <title type="html"><![CDATA[VS2008 .suo File Rant]]></title>
     <link href="http://TheoAndersen.github.io/blog/2010/03/30/vs2008-suo-file-rant/"/>
-    
     <updated>2010-03-30T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2010/03/30/vs2008-suo-file-rant</id>
-    
     <content type="html"><![CDATA[<p>Recently Visual Studio 2008 has begun to act very slowly, taking minutes to start and shutdown whilst showing the grayed &#8220;not responding&#8221; at the same time, because windows can&#8217;t figure out what it&#8217;s doing either. I started uninstalling plugins as CodeRush, GitExtensions etc, but it didn&#8217;t help. Then googling the problem i found a suggestion as to remove the .suo file that lies in the same folder as the .sln file, and it worked! :S</p>
 <p>Removing the .suo file which was about 50mb, took the visual studio ram usage from just over 1gb to 100mb, and Visual Studio is now much more responsive also. Very odd, but it seems a lot of people has the same experience. Sure hope this becomes better / more solid in VS2010.</p>
 <p>So if Visual Studio begins to slow up, and take a lot of ram, then try renaming the .suo to .suoold or something, and see if it doesn&#8217;t help the performance. :)</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Quick-quick guide to the VI-editior in Git bash]]></title>
+    <title type="html"><![CDATA[Quick-quick Guide to the VI-editior in Git Bash]]></title>
     <link href="http://TheoAndersen.github.io/blog/2010/03/20/quick-quick-guide-to-the-vi-editior-in-git-bash/"/>
-    
     <updated>2010-03-20T00:00:00+01:00</updated>
     <id>http://TheoAndersen.github.io/blog/2010/03/20/quick-quick-guide-to-the-vi-editior-in-git-bash</id>
-    
     <content type="html"><![CDATA[<p>Two modes: command (the initial) and type   <br /> <br /><strong>Commands:</strong></p>
 <table style="width: 550px;" border="0" cellspacing="0" cellpadding="2">
 <tbody>
@@ -346,17 +303,13 @@ git rm &#8211;cached filename
 </tbody>
 </table>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Solution to slow Git bash when logged in as a domain user]]></title>
+    <title type="html"><![CDATA[Solution to Slow Git Bash When Logged in as a Domain User]]></title>
     <link href="http://TheoAndersen.github.io/blog/2010/03/19/solution-to-slow-git-bash-when-logged-in-as-a-domain-user/"/>
-    
     <updated>2010-03-19T00:00:00+01:00</updated>
     <id>http://TheoAndersen.github.io/blog/2010/03/19/solution-to-slow-git-bash-when-logged-in-as-a-domain-user</id>
-    
     <content type="html"><![CDATA[<p>Today i found that my newly installed git on my laptop at work was working pretty slow. 0.5 ~ 1sec delay on loading the git bash, and on every command. I logged in as a local user on the computer and the delay was gone.</p>
 
 <p>Searching the internet a bit, i found that git uses the default home, on my account set to be a network account. This ment that git would look in this directory all the time, causing the delay.</p>
@@ -373,17 +326,13 @@ git rm &#8211;cached filename
 
 <p>Now my git bash is back and fast again :)</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Calling ASP.NET AJAX web-services from JQuery]]></title>
+    <title type="html"><![CDATA[Calling ASP.NET AJAX Web-services From JQuery]]></title>
     <link href="http://TheoAndersen.github.io/blog/2009/10/11/calling-aspnet-ajax-web-services-from-jquery/"/>
-    
     <updated>2009-10-11T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2009/10/11/calling-aspnet-ajax-web-services-from-jquery</id>
-    
     <content type="html"><![CDATA[<p>I recently looked into calling ASP.NET Ajax web-services from JQuery, and it&rsquo;s actually not that hard.</p>
 <h2>The ASP.NET Ajax web-service</h2>
 <p>To create a client script enabled web-service, add the [ScriptService] to the web service class. This makes sure that the methods can be called from client script and also makes the returntype a JSON.</p>
@@ -445,17 +394,13 @@ $.ajax({
 <p>This example calls the the webserver with an id having the value two, which then responds with a JSON object. When the client side successfully completes the request, it creates an alertbox from the data in the returned JSON object.</p>
 <p>Sources: <br /><a href="http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/">http://encosia.com/2009/07/21/simplify-calling-asp-net-ajax-services-from-jquery/</a> <br /><a href="http://encosia.com/2008/06/05/3-mistakes-to-avoid-when-using-jquery-with-aspnet-ajax/">http://encosia.com/2008/06/05/3-mistakes-to-avoid-when-using-jquery-with-aspnet-ajax/</a> <br /><a href="http://docs.jquery.com/Ajax">http://docs.jquery.com/Ajax</a></p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Git - Fast distributed code versioning]]></title>
+    <title type="html"><![CDATA[Git - Fast Distributed Code Versioning]]></title>
     <link href="http://TheoAndersen.github.io/blog/2009/09/24/git-e28093-fast-distributed-code-versioning/"/>
-    
     <updated>2009-09-24T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2009/09/24/git-e28093-fast-distributed-code-versioning</id>
-    
     <content type="html"><![CDATA[<p>In case you haven&rsquo;t noticed, there&#8217;s a new code versioning system around, that&#8217;s gaining popularity fast.</p>
 <p>Meet Git.. :)   <br /><a href="http://git-scm.com/" target="_blank"><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="image" src="http://TheoAndersen.github.io/assets/git.png" border="0" alt="image" width="606" height="87" /></a>&nbsp; <br />(click to open git&rsquo;s homepage)</p>
 <p>Now i am just starting to lean git, but as far as I&#8217;ve understood, here&#8217;s are some of the main points:</p>
@@ -470,31 +415,23 @@ $.ajax({
 <p>Now it seems that git is stronger and faster than Subversion which we normally use on our projects (or Team Foundation), but there&#8217;s a slight learning hump to start with, as most people are used to a centralized versioning model, as CVS, SVN and Team Foundation (although you can of cause use a central repository with git also). Once people get more acquainted with git I&#8217;m sure it will gain even more popularity.</p>
 <p>That&#8217;s all for now on Git - once I&#8217;ve played around with it some more I&#8217;ll write another post about my experiences.</p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[JQuery - Smarter client scripting]]></title>
+    <title type="html"><![CDATA[JQuery - Smarter Client Scripting]]></title>
     <link href="http://TheoAndersen.github.io/blog/2009/08/28/jquery-e28093-smarter-client-scripting/"/>
-    
     <updated>2009-08-28T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2009/08/28/jquery-e28093-smarter-client-scripting</id>
-    
     <content type="html"><![CDATA[<p>Web developers should already be familiar with JQuery. It&#8217;s an opensouce JavaScript library that makes writing simpler and more effective JavaScript possible. And it&#8217;s made to abstract away differences between browsers.</p>
 <p>Actually it requires nothing more than a JavaScript library that you download and reference. <br /><br />Normally i would show some JQuery code here, but as i&#8217;m myself just starting learning and using JQuery, I will just tell you that there&#8217;s a good tutorial and info about JQuery on its site: <a href="http://jquery.com/">http://jquery.com/</a></p>
 ]]></content>
-    
   </entry>
   
   <entry>
-    
-    <title type="html"><![CDATA[Yet another development blog online.]]></title>
+    <title type="html"><![CDATA[Yet Another Development Blog Online.]]></title>
     <link href="http://TheoAndersen.github.io/blog/2009/07/24/yet-another-development-blog-onlinee280a6/"/>
-    
     <updated>2009-07-24T00:00:00+02:00</updated>
     <id>http://TheoAndersen.github.io/blog/2009/07/24/yet-another-development-blog-onlinee280a6</id>
-    
     <content type="html"><![CDATA[<p>This is the beginning of yet another development blog, mostly oriented on .NET development.</p>
 <p>I&rsquo;m an software engineer, just in the beginning of my career and as I&#8217;m learning and expanding my knowledge and skills, I&#8217;ve decided to create a blog, thinking that it will make me improve my own skills sharing the knowledge.&nbsp; <br /> <br />How?.. well:</p>
 <ul>
@@ -505,7 +442,6 @@ $.ajax({
 </ul>
 <p>So I&#8217;ll try to keep putting tricks, thoughts or anything I find interesting and useful on this blog. Maybe I&#8217;ll even find a name for it one day.</p>
 ]]></content>
-    
   </entry>
   
 </feed>
