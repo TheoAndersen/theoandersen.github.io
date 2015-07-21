@@ -19,29 +19,46 @@ Make a sort of code-field, where you have arrows on the side, with explaining te
 - Some easy way of keeping the whole refactoring in a file.. uhmm.. maybe a small git repo? (perhaps not portable enough)
 
 * Idea´s for future posts
-** -=Git/Tfs=-
-*** Why i don't like TFS but like Git
-- Points that i can do in TFS, can i do them in git? how
-- Points i can in git but cant in TFS
-- How do i identify code versions that has been changed the most.. (files at first)
+** Git/Tfs
+*** Why i really don't like TFS but prefer Git
+Being a professional .NET developer i've used TFS pretty much since the sourcesafe days (along with the occational svn). I've though used git alot on side project and at home. If your only familiar with TFS and perhaps svn, you have no idea what your missing out on, and you might be hurting alot in areas as branching more than you have to.
+
+I currently work on a project with many branches and many developers in TFS and am expeciencing alot of hurt that i think would be less painfull if we were using tools as git instead. I actually thing that a lot of the bad rep branching and merging has it because of the pain cause when using tools that's got in hacked in - such as TFS.
+
+**** The difference in structure between branches in git and tfs
+Whats possible in different versioning systems and how one uses them has everyting to do with the structure they use - this is also true about their support for branching.
+
+Git is one graph (paths can divide and converge) of changes originating from one first commit. A branch is a pointer to one place in this graph
+
+In TFS changes is oneway linear, except when branching. A branch is a copy in another folder location which has its own linear history, but you can merge (soft of copy) content from one to another.
+
+***** A merge is always a squash in TFS, as opposed to git
+(because we copy all content thats missing in one branch to the other one and put then in a new commit (marking them as Merged (meaning no change), merge edit.. etc.
+
+In git a merge is joining divided paths into one - meaning thats its no copy of code from a branch to another - actually the commit has changed content it self if there was no conflicts in the merge, why should there? All the info of the two branches is in the diverted paths before the merge.
+**** Points that i can do in TFS, can i do them in git? how
+**** Points i can in git but cant in TFS
+**** How do i identify code versions that has been changed the most.. (files at first)
+**** Finding merge errors across branches is painfully difficult in TFS
+**** You can get Merge errors if you forget to get-latest before merging
 
 More about Microsofts comparisons of Git vs TFS
 (much of it is based on Microsofts use of git - not git it self)
 http://msdn.microsoft.com/en-us/library/ms181368.aspx#tfvc_or_git_summary
 
 **** Git vs TFS
-|-----------------+---------------+-------------------------|
-|                 | =GIT=         | =TFS=                   |
-|-----------------+---------------+-------------------------|
-| Branching       | project-based | folder-based            |
-|-----------------+---------------+-------------------------|
-| local branches  | Yes           | No                      |
-|-----------------+---------------+-------------------------|
-| Most operations | local only    | connected to TFS server |
-|-----------------+---------------+-------------------------|
-| VCS model       | Distributed   | Centralized             |
-|-----------------+---------------+-------------------------|
-|                 |               |                         |
+|-----------------+---------------+---------------------------------------|
+|                 | =GIT=         | =TFS=                                 |
+|-----------------+---------------+---------------------------------------|
+| Branching       | project-based | folder-based                          |
+|-----------------+---------------+---------------------------------------|
+| local branches  | Yes           | No                                    |
+|-----------------+---------------+---------------------------------------|
+| Most operations | works locally | only when connected to the TFS server |
+|-----------------+---------------+---------------------------------------|
+| VCS model       | Distributed   | Centralized                           |
+|-----------------+---------------+---------------------------------------|
+|                 |               |                                       |
 
 **** Points to investigate
 ***** A TFS Merge squashes commits to one new one created in the new branch
@@ -50,8 +67,9 @@ http://msdn.microsoft.com/en-us/library/ms181368.aspx#tfvc_or_git_summary
 ***** Cherry pick commits when merging
 ***** "Baseless" merges (is there such a thing in git at all - dosen't it just work?)
 ***** (new) Ability to easily go forward/backwards with versioning of a file (+ keep position)
-
-** -=NoSQL / RavenDB topics=-
+*** Microcommitting
+*** Issues with converting big centralized projects
+** NoSQL / RavenDB topics
 *** DONE About my professional master thesis on RavenDB (A case study of the document database RavenDB)
 About what i did, when i did it
 And what i found in a heli overview
@@ -61,12 +79,18 @@ Tag udsnit stort set fra min rapport og forklar hvorfor nosql er et dårligt nav
 *** Document database modelling versus relational modelling
 Denormalisering i RavenDB versus normalisering i relationel databas
 *** NoSQL - Integration versus application databas
-** -=Process=-
+*** Base index layer on top of a relationel database (or any data?)
+** Process
 *** Running Scrum by the book - Noget om hvorfor jeg tit er irritereet på scrum ("Vi kører scrum efter bogen")
 *** Keep your eye on the ball - Value proposition anyone?
 *** If you don't stand up to your customers, you're gonna loose them
 *** Agile and Flaccid scrum
-** -=Better Code/Common antipatterns=-
+*** Scrum and self organizing team...
+Vi starter den anden vej, og arbejder os mod det mere selvorganiserende team
+
+Men nu når jeg læser scrum bogen, synes jeg slet ikke han snakker om det selvorganiserende team på den samme måde...
+
+** Better Code/Common antipatterns
 *** Classofobia? The fear of creating new classes
 Hvorfor faen virker det somom at udviklere ikke bryde sig om at lave nye klasser?
 - Er det objekter de ikke kan lide?
@@ -101,7 +125,8 @@ http://blogs.msdn.com/b/nickmalik/archive/2005/09/07/462054.aspx
 Business command
 
 Uncle bobs business command
-*** Internal classes
+*** The builder pattern
+*** Internal classes - its not all evil
 Theyr not all evil.. Can actually be usefull
 
 example: RavenDB Index'es and Model an index works on
@@ -118,7 +143,77 @@ Explain why it should be like this?
    Or it might not compile
 
 2) Make it compile and get green fast
-   Don't do it the nice way - hard code.. commit the sins you want to get green
+   Don't do it the nice way - hard code.. commit the sins you want to get green (get green as fast as you can)
 
-3) Refactor it to remove duplication, make it more general. nicer
+3) Refactor it to remove duplication, make it more general. nicer (take your time)
    Keep the green but remove the duplication (also between testcase and code)
+
+Reasons that this is beneficial:
+- You always work on known working code, this means that you keep focused, and less often get side-tracked on something that doesn't work.
+- It also keep the bits you code small, which makes it easier to comprehend
+- using tests enables refactoring (everytime you refactor uncovered territory you screw something up - trust me..)
+- Doing this you will find your self refactoring way more than you used too, and you will have more 'headroom' to concentrate on the design
+- Its easier to concentrate on the design when you don't have to worry about making errors at the same time
+- You can vary the step-size, based on your confidence in what your coding. (larger steps if your confident, more support with smaller steps if your not)
+
+*** You logging is a missing event abstraction
+*** Code retreat - practice your way to better Object-oriented skills
+*** DOING Practising TDD Kata's with code constraints
+--> learning ruby on codeacademy to do the examples in ruby :)
+** Erlang/Functional programming
+*** The basic structure of Erlang
+In #erlang you structure code in modules containing functions. But the work is done in processes which can use functions in many modules.
+
+Processes can communicate though message passing, and a process has a messagebox and can decide which messages to recieve/read.
+
+A Module exports the functions that are public.
+These are used by processes. Two kinds of processes normally
+1) The process which the module represents (to start a server fx.)
+2) The clients of this server, because you encapsulate the functions that makes it able to send messages to the server
+
+StartServer
+ -> Starts a recieve loop which does something to the recieved messages
+
+AskServerA
+ -> Sends message A to the server
+
+AskServerB
+ -> Sends message B to the server
+*** Naming preferences in object oriented and functional programming
+Navngivning er en kæmpe del af kodning - ellers forstår man ikke en pind af hvad der er lavet.
+God kode virker ikke kun for dig selv, men også for andre er skal læse det.
+Det smame med opbygningen - især i objekt orienteret programmering
+
+i funktionelle sprog er tendensen lidt at man kan skrive ting meget mere kompakt end i objekt oriterede prog.
+Herved virker det også somom at programmører har en tendens til at forkorte meget mere, og det bliver utrolig indforstået
+hvad der sker
+
+=Theo:= /Whats with the terrible shortened names #erlang folk? Just because it's smaller doesn't mean its easier to understand #learnerlang/
+=‏@sinasamavati= /@TheoAndersen I prefer short descriptive names rather than a sentence as a name. @joescii has a nice post about it:/ http://proseand.co.nz/2014/07/28/on-naming/
+=Theo:= /@sinasamavati "as long as I’m not working alone, I’m more than willing to lay aside my preferences for the greater good of the team/
+=Theo:= /@sinasamavati I must say that quote sums it up for me. I agree with most in the article. The greek letter reference is way of in my book./
+=Theo:= /@sinasamavati so I'm with @adibolb on naming./
+=@sinasamavati= /@TheoAndersen I feel really annoyed when I have to write/read long names. but yeah, that quote explains something./
+=Theo:= /@sinasamavati i agree that names shouldn't be in the way. But names shouldn't be too esoteric - it makes it very hard to 'get' others code./
+=@sinasamavati= /@TheoAndersen Agreed/
+
+Reverse hungarian notation
+https://twitter.com/eed3si9n/status/244953689738059776
+s
+*** Why use elixir instead of erlang
+** Emacs
+*** Using travic-Ci to build and run your config when you push to github
+Sådan at man kan se hvis der er konfigurationsfejl man ikke selv har fanget (treat warnings as errors on load)
+** SOA
+*** 'Svartider' and turning the bucket around
+Om hvordan svartider må være aggregerede, sa services kan kalde services
+
++ om hvordan man så ændrer dette mønster, til det omvendte
+** Database tricks
+*** Sql Server sp_who2 to find blocks
+Hvordan man via sp_who2 kan se hvad der blokerer for hvad.
+*** Why seemingly straightforward queries can default to table scan (clustered index scan) because of misaligned column types
+Nem nem 3 vejs join med lav selectability som ikke virker fordi et index ikke bliver valgt (selv ikke det clustered index) da typerne er forskellige
+Char(10) versus nchar(10).. var svær at finde, men gav en kæmpe forskel..
+
+sp_tablehint.. eller hvad hed den nu?
