@@ -69,6 +69,22 @@ http://msdn.microsoft.com/en-us/library/ms181368.aspx#tfvc_or_git_summary
 ***** (new) Ability to easily go forward/backwards with versioning of a file (+ keep position)
 *** Microcommitting
 *** Issues with converting big centralized projects
+*** Structuring git repositories
+As of now the world has pretty much moved to git. A few places as my company, people are still using subversion or TFS, and some of these are considering moving to git. My company is one of these, and we have had a few introductory meeting for finding out what it would take to to our pretty big TFS setup to git. Being that i have worked a fair bit with git on everything else than work for the past years i know how git works and should be structured, but it can be hard to understand if you are from a purely centralised VCS background as Svn or TFS as these simply dosent structure code as git does.
+
+Branches aren't in seperate folders
+---
+In git branches are a concept 
+
+Typical SVN structure
+- Tags
+  \- Release 1.0
+   - Releate 1.1
+- Trunk
+- Branches
+  \- Feature X
+  \- Spike y
+
 ** NoSQL / RavenDB topics
 *** DONE About my professional master thesis on RavenDB (A case study of the document database RavenDB)
 About what i did, when i did it
@@ -156,10 +172,20 @@ Reasons that this is beneficial:
 - Its easier to concentrate on the design when you don't have to worry about making errors at the same time
 - You can vary the step-size, based on your confidence in what your coding. (larger steps if your confident, more support with smaller steps if your not)
 
-*** You logging is a missing event abstraction
+*** Your logging is a missing abstraction (using events)
 *** Code retreat - practice your way to better Object-oriented skills
-*** DOING Practising TDD Kata's with code constraints
+*** DONE DOING Practising TDD Kata's with code constraints
+CLOSED: [2015-07-27 Mon 16:09]
 --> learning ruby on codeacademy to do the examples in ruby :)
+
+** Languages
+
+*** Exercises to learn a new language
+Unit test framework (Kent Beck)
+Bowling kata
+Markdown parser (Dave Thomas)
+
+
 ** Erlang/Functional programming
 *** The basic structure of Erlang
 In #erlang you structure code in modules containing functions. But the work is done in processes which can use functions in many modules.
@@ -204,6 +230,7 @@ s
 ** Emacs
 *** Using travic-Ci to build and run your config when you push to github
 Sådan at man kan se hvis der er konfigurationsfejl man ikke selv har fanget (treat warnings as errors on load)
+*** 
 ** SOA
 *** 'Svartider' and turning the bucket around
 Om hvordan svartider må være aggregerede, sa services kan kalde services
