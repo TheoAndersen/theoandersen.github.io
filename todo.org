@@ -19,34 +19,40 @@ Make a sort of code-field, where you have arrows on the side, with explaining te
 - Some easy way of keeping the whole refactoring in a file.. uhmm.. maybe a small git repo? (perhaps not portable enough)
 
 * Idea´s for future posts
-** Git/Tfs
-*** Why i really don't like TFS but prefer Git
+** Frontend - Codebehind -> JQuery -> Angular -> React -> ELM
+** Elm - declarative frontend programming
+** SOA - 'Svartider' and turning the bucket around                                                                                     
+Om hvordan svartider må være aggregerede, sa services kan kalde services
+
++ om hvordan man så ændrer dette mønster, til det omvendte
+** SOA - Microservices og asyncronous communication
+** VCS - Why i really don't like TFS but prefer Git
 Being a professional .NET developer i've used TFS pretty much since the sourcesafe days (along with the occational svn). I've though used git alot on side project and at home. If your only familiar with TFS and perhaps svn, you have no idea what your missing out on, and you might be hurting alot in areas as branching more than you have to.
 
 I currently work on a project with many branches and many developers in TFS and am expeciencing alot of hurt that i think would be less painfull if we were using tools as git instead. I actually thing that a lot of the bad rep branching and merging has it because of the pain cause when using tools that's got in hacked in - such as TFS.
 
-**** The difference in structure between branches in git and tfs
+*** The difference in structure between branches in git and tfs
 Whats possible in different versioning systems and how one uses them has everyting to do with the structure they use - this is also true about their support for branching.
 
 Git is one graph (paths can divide and converge) of changes originating from one first commit. A branch is a pointer to one place in this graph
 
 In TFS changes is oneway linear, except when branching. A branch is a copy in another folder location which has its own linear history, but you can merge (soft of copy) content from one to another.
 
-***** A merge is always a squash in TFS, as opposed to git
+**** A merge is always a squash in TFS, as opposed to git
 (because we copy all content thats missing in one branch to the other one and put then in a new commit (marking them as Merged (meaning no change), merge edit.. etc.
 
 In git a merge is joining divided paths into one - meaning thats its no copy of code from a branch to another - actually the commit has changed content it self if there was no conflicts in the merge, why should there? All the info of the two branches is in the diverted paths before the merge.
-**** Points that i can do in TFS, can i do them in git? how
-**** Points i can in git but cant in TFS
-**** How do i identify code versions that has been changed the most.. (files at first)
-**** Finding merge errors across branches is painfully difficult in TFS
-**** You can get Merge errors if you forget to get-latest before merging
+*** Points that i can do in TFS, can i do them in git? how
+*** Points i can in git but cant in TFS
+*** How do i identify code versions that has been changed the most.. (files at first)
+*** Finding merge errors across branches is painfully difficult in TFS
+*** You can get Merge errors if you forget to get-latest before merging
 
 More about Microsofts comparisons of Git vs TFS
 (much of it is based on Microsofts use of git - not git it self)
 http://msdn.microsoft.com/en-us/library/ms181368.aspx#tfvc_or_git_summary
 
-**** Git vs TFS
+*** Git vs TFS
 |-----------------+---------------+---------------------------------------|
 |                 | =GIT=         | =TFS=                                 |
 |-----------------+---------------+---------------------------------------|
@@ -60,16 +66,16 @@ http://msdn.microsoft.com/en-us/library/ms181368.aspx#tfvc_or_git_summary
 |-----------------+---------------+---------------------------------------|
 |                 |               |                                       |
 
-**** Points to investigate
-***** A TFS Merge squashes commits to one new one created in the new branch
-***** Annotate/Blame
-***** Rollback one or multiple items
-***** Cherry pick commits when merging
-***** "Baseless" merges (is there such a thing in git at all - dosen't it just work?)
-***** (new) Ability to easily go forward/backwards with versioning of a file (+ keep position)
-*** Microcommitting
-*** Issues with converting big centralized projects
-*** Structuring git repositories
+*** Points to investigate
+**** A TFS Merge squashes commits to one new one created in the new branch
+**** Annotate/Blame
+**** Rollback one or multiple items
+**** Cherry pick commits when merging
+**** "Baseless" merges (is there such a thing in git at all - dosen't it just work?)
+**** (new) Ability to easily go forward/backwards with versioning of a file (+ keep position)
+** VCS - Microcommitting
+** VCS - Issues with converting big centralized projects
+** VCS - Structuring git repositories
 As of now the world has pretty much moved to git. A few places as my company, people are still using subversion or TFS, and some of these are considering moving to git. My company is one of these, and we have had a few introductory meeting for finding out what it would take to to our pretty big TFS setup to git. Being that i have worked a fair bit with git on everything else than work for the past years i know how git works and should be structured, but it can be hard to understand if you are from a purely centralised VCS background as Svn or TFS as these simply dosent structure code as git does.
 
 Branches aren't in seperate folders
@@ -85,29 +91,16 @@ Typical SVN structure
   \- Feature X
   \- Spike y
 
-** NoSQL / RavenDB topics
-*** DONE About my professional master thesis on RavenDB (A case study of the document database RavenDB)
-About what i did, when i did it
-And what i found in a heli overview
-*** NoSQL - what a shitty name
-Tag udsnit stort set fra min rapport og forklar hvorfor nosql er et dårligt navn.. nonRel?
-*** RavenDB Architecture
-*** Document database modelling versus relational modelling
-Denormalisering i RavenDB versus normalisering i relationel databas
-*** NoSQL - Integration versus application databas
-*** Base index layer on top of a relationel database (or any data?)
-** Process
-*** Running Scrum by the book - Noget om hvorfor jeg tit er irritereet på scrum ("Vi kører scrum efter bogen")
-*** Keep your eye on the ball - Value proposition anyone?
-*** If you don't stand up to your customers, you're gonna loose them
-*** Agile and Flaccid scrum
-*** Scrum and self organizing team...
+** Scrum - Running Scrum by the book - Noget om hvorfor jeg tit er irritereet på scrum ("Vi kører scrum efter bogen")              
+** Customers - Keep your eye on the ball - Value proposition anyone?                                                               
+** Customers - If you don't stand up to your customers, you're gonna loose them                                                    
+** Scrum - Agile and Flaccid scrum                                                                                                 
+** Scrum - Scrum and self organizing team...                                                                                       
 Vi starter den anden vej, og arbejder os mod det mere selvorganiserende team
 
 Men nu når jeg læser scrum bogen, synes jeg slet ikke han snakker om det selvorganiserende team på den samme måde...
 
-** Better Code/Common antipatterns
-*** Classofobia? The fear of creating new classes
+** Design - The fear of creating new classes                                                                                    
 Hvorfor faen virker det somom at udviklere ikke bryde sig om at lave nye klasser?
 - Er det objekter de ikke kan lide?
 - Er det filer?
@@ -119,7 +112,7 @@ fordi man oftere ændrer i de samme filer.
 
 _Reasons for creating a new class_
 
-*** The Helper anti-pattern (utility pattern)
+** Design - The Helper anti-pattern (utility pattern)                                                                           
  - _Helper files_
    A file thats called helper, and includes a lot of different
 
@@ -130,7 +123,7 @@ http://scottboring.com/the-helper-anti-pattern/
 http://blogs.msdn.com/b/nickmalik/archive/2005/09/06/461404.aspx
 http://blogs.msdn.com/b/nickmalik/archive/2005/09/07/462054.aspx
 
-*** The Layer anti-pattern
+** Design - The Layer anti-pattern                                                                                              
  - _Files that end with the name layer (OrderBLL.cs, OrderLayer.cs)_
    A layer in your app shouln't be constricted to a single file -
      -It makes the overall behavious of your application hidden from the directory structure, as all you can see is that its about the order
@@ -141,14 +134,16 @@ http://blogs.msdn.com/b/nickmalik/archive/2005/09/07/462054.aspx
 Business command
 
 Uncle bobs business command
-*** The builder pattern
-*** Internal classes - its not all evil
+** Design - The builder pattern                                                                                                 
+** Design - Internal classes - its not all evil                                                                                 
 Theyr not all evil.. Can actually be usefull
 
 example: RavenDB Index'es and Model an index works on
 
 Command pattern.. request response as internal classes
-*** Controlling your steps using TDD
+
+** Design - Your logging is a missing abstraction (using events)                                                                
+** TDD - Controlling your steps using TDD                                                                       
 Explain the steps again
 but include help from James Shore and Kent Beck
 
@@ -171,23 +166,14 @@ Reasons that this is beneficial:
 - Doing this you will find your self refactoring way more than you used too, and you will have more 'headroom' to concentrate on the design
 - Its easier to concentrate on the design when you don't have to worry about making errors at the same time
 - You can vary the step-size, based on your confidence in what your coding. (larger steps if your confident, more support with smaller steps if your not)
-
-*** Your logging is a missing abstraction (using events)
-*** Code retreat - practice your way to better Object-oriented skills
-*** DONE DOING Practising TDD Kata's with code constraints
-CLOSED: [2015-07-27 Mon 16:09]
---> learning ruby on codeacademy to do the examples in ruby :)
-
-** Languages
-
-*** Exercises to learn a new language
+** Design - practice your way to better Object-oriented skills                                                                  
+** Languages - Exercises to learn a new language                                                                                      
 Unit test framework (Kent Beck)
 Bowling kata
 Markdown parser (Dave Thomas)
 
-
-** Erlang/Functional programming
-*** The basic structure of Erlang
+** Erlang - The basic structure of Erlang                                                                                
+CLOSED: [2016-01-02 Sat 20:30]
 In #erlang you structure code in modules containing functions. But the work is done in processes which can use functions in many modules.
 
 Processes can communicate though message passing, and a process has a messagebox and can decide which messages to recieve/read.
@@ -205,7 +191,7 @@ AskServerA
 
 AskServerB
  -> Sends message B to the server
-*** Naming preferences in object oriented and functional programming
+** Languages - Naming preferences in object oriented and functional programming                                                 
 Navngivning er en kæmpe del af kodning - ellers forstår man ikke en pind af hvad der er lavet.
 God kode virker ikke kun for dig selv, men også for andre er skal læse det.
 Det smame med opbygningen - især i objekt orienteret programmering
@@ -226,21 +212,29 @@ hvad der sker
 Reverse hungarian notation
 https://twitter.com/eed3si9n/status/244953689738059776
 s
-*** Why use elixir instead of erlang
-** Emacs
-*** Using travic-Ci to build and run your config when you push to github
+** Elixir - Why use elixir instead of erlang                                                                             
+** Using travic-Ci to build and run your config when you push to github                                                             
 Sådan at man kan se hvis der er konfigurationsfejl man ikke selv har fanget (treat warnings as errors on load)
-*** 
-** SOA
-*** 'Svartider' and turning the bucket around
-Om hvordan svartider må være aggregerede, sa services kan kalde services
-
-+ om hvordan man så ændrer dette mønster, til det omvendte
-** Database tricks
-*** Sql Server sp_who2 to find blocks
+** Db - Base index layer on top of a relationel database (or any data?)
+** Db - Sql Server sp_who2 to find blocks                                                                                               
 Hvordan man via sp_who2 kan se hvad der blokerer for hvad.
-*** Why seemingly straightforward queries can default to table scan (clustered index scan) because of misaligned column types
+** Db - Why seemingly straightforward queries can default to table scan (clustered index scan) because of misaligned column types       
 Nem nem 3 vejs join med lav selectability som ikke virker fordi et index ikke bliver valgt (selv ikke det clustered index) da typerne er forskellige
 Char(10) versus nchar(10).. var svær at finde, men gav en kæmpe forskel..
 
 sp_tablehint.. eller hvad hed den nu?
+** Db - NoSQL - what a shitty name
+Tag udsnit stort set fra min rapport og forklar hvorfor nosql er et dårligt navn.. nonRel?
+** Db - RavenDB Architecture
+** Db - Document database modelling versus relational modelling
+Denormalisering i RavenDB versus normalisering i relationel databas
+** Db - Integration versus application databas
+
+** DONE Db - About my professional master thesis on RavenDB (A case study of the document database RavenDB)
+About what i did, when i did it
+And what i found in a heli overview
+** DONE Practising TDD Kata's with code constraints
+CLOSED: [2015-07-27 Mon 16:09]
+--> learning ruby on codeacademy to do the examples in ruby :)
+
+
