@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Using unit-tests to shorten the feedback cycle"
+comments: true
+---
+<p>The speed of development can be measured in how long it takes to write code, and then how long it takes to test that it works.</p>
+<p>Now the normal way of testing is running the system and poke around in the area of the change, to confirm that the change works as it should. This can be very slow if you have to enter multiple hierarchy's&nbsp; of nested pages or because the system simply takes a while to load and enter. This is where unit tests can be of help.</p>
+<p>Even though you don&rsquo;t buy into the whole idea of covering everything with unit-tests, shortening the feedback cycle will shorten the time i takes to find out if your change works as it should, and this can be helped by testing through a unit-test instead of though the actual system.</p>
+<p>I experienced this my self, when building a component that would allow other systems to integrate data our. In this case every request needed to convert input data, validate it, run validation against another external source (returned as json), and then save in the database. Now in this case, i found that creating simple unit tests, for testing the parts allowed me to build this more in component, and much faster, as i was shortening the feedback cycle. Now not every piece of code is straight forward to unit test. But at least evaluating the quickest/easiest way to test a piece of code, should be on every pragmatic programmers backbone.</p>

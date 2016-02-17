@@ -1,0 +1,8 @@
+---
+layout: post
+title: "VS2008 .suo file rant"
+comments: true
+---
+<p>Recently Visual Studio 2008 has begun to act very slowly, taking minutes to start and shutdown whilst showing the grayed "not responding" at the same time, because windows can't figure out what it's doing either. I started uninstalling plugins as CodeRush, GitExtensions etc, but it didn't help. Then googling the problem i found a suggestion as to remove the .suo file that lies in the same folder as the .sln file, and it worked! :S</p>
+<p>Removing the .suo file which was about 50mb, took the visual studio ram usage from just over 1gb to 100mb, and Visual Studio is now much more responsive also. Very odd, but it seems a lot of people has the same experience. Sure hope this becomes better / more solid in VS2010.</p>
+<p>So if Visual Studio begins to slow up, and take a lot of ram, then try renaming the .suo to .suoold or something, and see if it doesn't help the performance. :)</p>

@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Using unit tests in IOS development"
+comments: true
+---
+<p>Using unit tests in XCode you have the posibility to have two test targets (sub-projects) set up; one for <em>logic tests</em> and one for <em>application tests</em>. So whats the difference?</p>
+<p><em>Logic tests</em> run without the Application running, so you wont be able to reach your app-delegate or anything UI related, but you will be able to test POOC's (Plain Old Obj-C Classes). The <em>Application Tests</em> target, will start up the simulator and use it to run your unit tests.</p>
+<p>When i develop, i normally use the logic tests target for the classes providing domain behaviour. Not having to start up the simulator makes theses tests fast to run, making the feedback cycle shorter and you always want as short a feedback cycle as you can get.&nbsp;So when implementing a new feature i start up with the base domain behaviour and make it run with the logic tests. I then i move to the GUI, which uses this new feature and implement it with tests in the Application tests target. With this working i can then wire up the nibs or similar and start up the simulator to check that the feature works as it should.</p>
+<p>It did initially seem a bit odd to have two unit test targets, but being that the one needs the simulator to run it makes sense.</p>
