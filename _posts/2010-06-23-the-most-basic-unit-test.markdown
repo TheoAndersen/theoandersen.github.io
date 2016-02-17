@@ -7,13 +7,13 @@ Today i realized what the most basic form of a unit-test is.
 
 It's this:
 
-``` csharp
+{% highlight csharp %}
 // the account must be reapproved
 if(Account.Type == AccountType.Normal)
 {
   Account.ApprovalExpiryDate = DateTime.Now;
 }
-```
+{% endhighlight %}
 
 I was looking at a similar piece of code on the project i'm currently developer on at work, and was wondering why the first line of comments were there (i hate unnecessary comments, which clutter the meaning of the code). And then i realized that even though the first line of comments is clearly repeating whats really easily read in the expression in the if statement, it is making sure that that's what should be in the if-expression. If someone were to change the expression we would still have that line of code to make sure that the expression was what was originally intended.
 

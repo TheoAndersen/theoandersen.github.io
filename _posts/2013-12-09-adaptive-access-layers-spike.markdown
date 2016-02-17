@@ -11,22 +11,22 @@ The AAL spike code can be found on: [github.com/TheoAndersen/AdaptiveAccessLayer
 The general idea is that every external dependency of the system as ex. database access, logging etc. is handled by an AAL-framework which dynamically creates the implementation of the interfaces you provide from your business logic, to use the external dependencies. So if you need a logging mechanism, you would create an interface with the right attributes to denote that its an interface providing access to the logger. The framework would then create an implementation for the interface and wire it up to the logging part of the framwork, without the code using the interface knowing about this.
 
 {:.center}
-![]({{ site.url }}/assets/aal-class-diagram.png)
+![](/assets/aal-class-diagram.png)
 
 This class diagram shows the structure I've used in the spike. The ITestLogWriter represents an interface created by some business logic. The implementation is dynamically created by the AAL code, which wires it up to the LogContract derived AAL class, which handles the actual logging.
 
-``` csharp
+{% highlight csharp %}
 [LogContract]
 public interface ITestLogWriter
 {
    [LogEntryContract]
    string Log(string message, int second);
 }
-```
+{% endhighlight %}
 
 This is how an interface could look like. The implementation that the AAL framework would create to hook this interface would then look like this.
 
-``` csharp
+{% highlight csharp %}
 public class TestLogWriterImpl : LogContract, ITestLogWriter
 {
     public string Log(string message, int second)
@@ -37,7 +37,8 @@ public class TestLogWriterImpl : LogContract, ITestLogWriter
         return (string)base.ExecuteImpl(MethodBase.GetCurrentMethod(), parameters);
     }
 }
-```
+{% endhighlight %}
+
 Now this would be generated directly in MSIL code. As can be seen from the class diagram as well, the AdaptiveLayerBase implements an ExecuteImpl method which fits together with the standard IL code. This fits together with an abstract Execute method, which is what the specific AAL layers must implement to act on any message executed on an AAL interface.
 
 Now i wont post any crazy IL generating code here, you can look at the github repo yourself for the part i've tried out, but it doesn't feel to me like very sturdy code. The method i used to find out what IL to write, was that i created the implementation in c# first and then used the "ildasm" tool to disassemble the dll and watch what IL code it compiled into, so that i could use that as a recipe for my implementation. Still its poor error handling you get when the generated assembly just doesn't work, which is also a good reason to keep the generated IL part as small and simple as possible, and keep the normal c# code doing the lifting.
