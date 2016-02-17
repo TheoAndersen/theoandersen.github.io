@@ -8,6 +8,7 @@
 
     // Positioning context for the mobile navigation icon
     position: relative;
+    color: #a00;
 }
 
 .site-title {
@@ -173,6 +174,7 @@
 
 .page-heading {
     font-size: 20px;
+    color: #a00;
 }
 
 .post-list {
@@ -180,18 +182,18 @@
     list-style: none;
 
     > li {
-        margin-bottom: $spacing-unit;
+        margin-bottom: $spacing-unit / 3;
     }
 }
 
 .post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
+  font-size: $small-font-size;
+  color: $grey-color;
+  font-family: Monaco, "Courier New", monospace;
 }
 
 .post-link {
-    display: block;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 
@@ -204,31 +206,33 @@
 }
 
 .post-title {
-    font-size: 42px;
+    font-size: 30px;
     letter-spacing: -1px;
     line-height: 1;
+    color: #a00;
 
     @include media-query($on-laptop) {
-        font-size: 36px;
+        font-size: 30px;
     }
 }
 
 .post-content {
-    margin-bottom: $spacing-unit;
+  margin-bottom: $spacing-unit;
+  text-align: justify;
 
     h2 {
-        font-size: 32px;
+        font-size: 24px;
 
         @include media-query($on-laptop) {
-            font-size: 28px;
+            font-size: 22px;
         }
     }
 
     h3 {
-        font-size: 26px;
+        font-size: 22px;
 
         @include media-query($on-laptop) {
-            font-size: 22px;
+            font-size: 20px;
         }
     }
 

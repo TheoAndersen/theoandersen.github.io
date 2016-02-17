@@ -30,7 +30,7 @@ First problem i encountered, was how to represent the typical primitive values o
 
 These are value representations, indicating a number that is not an entity. In the code-example (ruby) below you can see them as the number of pins thrown `throw(1)` and the resulting score. How can we represent this, other than just a basic int?
 
-``` ruby
+{% highlight ruby %}
 def test_aGameOfOnly1s
   game = Game.new()
   20.times do
@@ -38,11 +38,11 @@ def test_aGameOfOnly1s
   end
   assert_equal(20, game.score)
 end
-```
+{% endhighlight %}
 
 The answer could be a Value Object. A Value object is created by encapsulating the primitive inside an object with a name (Pins in this example) and making sure that two objects with the same value are equal (normally by overriding a `equals()`).
 
-``` ruby
+{% highlight ruby %}
 class Pins
   protected
   attr_reader :pins
@@ -64,7 +64,7 @@ def test_aGameOfOnly1s
   end
   assert_equal(Pins.new(20), game.score)
 end
-```
+{% endhighlight %}
 
 In this way we can use the object as it were a primitive that fits the domain, and still use the logical operations on it just as with primitives.
 
@@ -72,7 +72,7 @@ Polymorphism to control state
 -----------------------------
 In the Conways game of life kata (c#), i had an object, which returned a simple bool about the state the object was in. In this particular example it was the notion of a Cell being alive or dead. Now returning a bool dosen't adhear to the constaint, so i had to do something about it. But how to get around this kind of state?
 
-``` csharp
+{% highlight csharp %}
 [Test]
 public void GetCellAtShouldOnlyReturnLivingCellsWhenSet()
 {
@@ -81,11 +81,11 @@ public void GetCellAtShouldOnlyReturnLivingCellsWhenSet()
   Assert.AreEqual(false, world.GetCellAt(new Location(1, 1)).IsAlive);
   Assert.AreEqual(true, world.GetCellAt(new Location(99, 99).IsAlive);
 }
-```
+{% endhighlight %}
 
 One solution i found was to extend Cell so that Cell was an abstract class which could either be instantiated as an AliveCell or a DeadCell. This way the `bool IsAlive()` method dissapeared as the type of the Cell would give the information of the cell being alive or dead.
 
-``` csharp
+{% highlight csharp %}
 public abstract class Cell
 {
   public Location Location { get; private set; }
@@ -120,7 +120,7 @@ public void GetCellAtShouldOnlyReturnLivingCellsWhenSet()
   Assert.IsInstanceOfType(typeof(DeadCell), world.GetCellAt(new Location(1, 1)));
   Assert.IsInstanceOfType(typeof(AliveCell), world.GetCellAt(new Location(99, 99)));
 }
-```
+{% endhighlight %}
 
 This way we include the type of the object to control the state. Other than this i like the way the objects are beginning to model the problem more than just having a World and a simple Cell class.
 
