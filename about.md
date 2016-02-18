@@ -3,13 +3,8 @@ layout: page
 title: About
 permalink: /about/
 ---
+I’m a software developer based in Copenhagen, Denmark, working professionally with .NET as a Developer/Architect/Tema Lead and investigating anythning interesting on the isde.
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Right now my interests are especially functional languages - in particular Elixir (on the Erlang VM) and Elm (a younger functional frontend language). I'm intruiged by agile team dynamics and scaling them, having worked several years on products panning multiple develppment teams.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+I use this blog mostly for my own purpose of remembering stuff, and only get time to do so once in a while.
