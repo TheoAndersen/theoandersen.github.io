@@ -3,8 +3,13 @@ layout: page
 title: About
 permalink: /about/
 ---
-I’m a software developer based in Copenhagen, Denmark, working professionally with .NET as a Developer/Architect/Tema Lead and investigating anythning interesting on the isde.
 
-Right now my interests are especially functional languages - in particular Elixir (on the Erlang VM) and Elm (a younger functional frontend language). I'm intruiged by agile team dynamics and scaling them, having worked several years on products panning multiple develppment teams.
+My name is Theo Andersen Carton and I'm a software developer, based in Copenhagen, Denmark.
 
-I use this blog mostly for my own purpose of remembering stuff, and only get time to do so once in a while.
+I currently work professionally with .NET, typically as a Developer, Architect, Team Lead or the like - but always spend a lot of free time learning, investigating and coding everything intereseting that i can get my hands on.
+
+At the moment it seems functional languages finally are on the rise, both providing more maintainable languages than the imperative object oriented, but also supporting stronger models for parallel and concurrent computation. (as fx the actor model in the Erlang VM). In this area, I'm currently interested in Elixir (another language on the Erlang VM) and Elm (a function languages which transpiles to javascript).
+
+Another interesting area is agile team dynamics and scaling these effectively. Having worked several years on a product spanning multiple development teams, and experiencing the difficulties with these, I am intruiged with anything in this area, as it seems a current not completely solved area. 
+
+Anyway i mostly use this blog for my own purposes of rememboring stuff. But do feel free to drop me a tweet about anothing you read here.
