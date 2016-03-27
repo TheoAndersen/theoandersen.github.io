@@ -6,10 +6,10 @@ permalink: /about/
 
 My name is Theo Andersen Carton and I'm a software developer, based in Copenhagen, Denmark.
 
-I currently work professionally with .NET, typically as a Developer, Architect, Team Lead or the like - but always spend a lot of free time learning, investigating and coding everything intereseting that i can get my hands on.
+I work professionally with .NET, typically as a Developer, Architect, Team Lead or the like - but always spend a lot of my free time learning, investigating and coding anything interesting that i can get my hands on.
 
-At the moment it seems functional languages finally are on the rise, both providing more maintainable languages than the imperative object oriented, but also supporting stronger models for parallel and concurrent computation. (as fx the actor model in the Erlang VM). In this area, I'm currently interested in Elixir (another language on the Erlang VM) and Elm (a function languages which transpiles to javascript).
+At the moment it seems functional languages are finally on the rise, providing more maintainable languages and supporting stronger models for parallel and concurrent computation. (as ex. the actor model in the Erlang VM). In this area I'm currently investigating Elixir (a language on the Erlang VM) and Elm (a haskell-inspired functiontional language which transpiles to javascript - no it's actually pretty neat).
 
-Another interesting area is agile team dynamics and scaling these effectively. Having worked several years on a product spanning multiple development teams, and experiencing the difficulties with these, I am intruiged with anything in this area, as it seems a current not completely solved area. 
+Another interesting area is agile team dynamics and scaling these effectively. Having worked several years on products spanning multiple development teams, experiencing the difficulties with these setups, I am intruiged with these concerns. 
 
-Anyway i mostly use this blog for my own purposes of rememboring stuff. But do feel free to drop me a tweet about anothing you read here.
+Anyway i mostly use this blog for my own purposes of rememboring stuff. But do feel free to drop me a tweet.
