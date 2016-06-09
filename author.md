@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Author
+permalink: /author/
 ---
 
 My name is Theo Andersen Carton and I'm a software developer, based in Copenhagen, Denmark.

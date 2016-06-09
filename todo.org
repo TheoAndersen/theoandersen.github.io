@@ -1,7 +1,38 @@
+* TODO
+** Tilføj en overskrift (hvad skal den hedde?)
+** Tilføje en kort tekst over blog-postsne
+** Tilføj Disguis kommentarer til bloggen
+https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions
+** Skriv de første indlæg
+** Stavekontrol i emacs?
+** Svar
+
+I'm going to try once a week (pwew). and will size the blogposts for what will take me 1-2 hours to write. or timeboxed to two evenings of spare time writing when the kids are sleeping :)
+
+I have a few todo's i feel i need to do on my blog, but im thinking of postponing scheduling them to do one of them every month, or im afraid ill never get to blogging :)
+ITs things like
+- adding disquis commenting
+- adding tags
+- adding another domain name which fits better with my theme of "Improving software by enhancing feedback"
+
+
+* Schedule - once a week --- pwew thats much.
+
+-once a week
+-once a month i upgrade my blog
+
+Så en blogpost skal tage max 1-2 timer at skrive
+Jeg må bruge to aftener på det.
+Forhåbentlig kan jeg komme ned på at bruge kun en :S
+
+* Theme?
+- Feedback
+- Program faster with better feedback
+- Gimme feedback...
+- meep meep.. feedback
 * Remember
 =to serve the server=
 jekyll serve
-
 
 * Idea for showing a refactoring in a blog post
 Make a sort of code-field, where you have arrows on the side, with explaining text underneith and can switch left or right to show the refactorings of the code
@@ -17,15 +48,60 @@ Make a sort of code-field, where you have arrows on the side, with explaining te
 - Maybe tabs with different files, or just keep them above each other
 - Some easy way of keeping the whole refactoring in a file.. uhmm.. maybe a small git repo? (perhaps not portable enough)
 
-* Idea´s for future posts
+* Idea's for posts regarding the loose topic 'feedback'
+Måske sortere rækken fra det der passer bedst med emnet og så nedaad??
 
+The toughest part of development, isnt developing the software - its figuring out if the thing you build does it right.. tja.
+
+** Feedback - feedback in development. What and why
+** Feedback - Feedback on business ideas
+** Feedback - TDD is a feedback technique
+** ------ most important above this line ------
+** Builds - quick builds
+** Elm - elm and feedback versus JavaScript and feedback
+** Test - larger test scopes
+** Test - testing private members. Are you nuts?
+** Test - automated tests should create their test-data
+** VCS - gated/pull requests - you should know that you can't break anything when committing
+** Feedback - bad/slow feedback is extremely expensive
+** Feedback know what delays you in a day
+** Languages - our programming languages are obsolete (we need dependency injection etc etc)
+** General - tech choices are about the business
+** Architecture - how you structure the files of your app (based on the business)
+** ObjectOriented - how we should be coding OO
+** VCS - better git commit messages
+** Functional - writing functional JavaScript ala Douglas Crockford
+** Languages - d. Crockford. Bad parts of a language 
+** Architecture - evolutionary architecture
+** Feedback - feedback in engineering (construction) spørg Louis
+** Builds - continuous delivery is about feedback
+** Feedback - academic material about feedback 
+** continuous delivery the Klaus way (code it while the customer is waiting in the same room)
+** feedback and responsibility (give people the responsibility and feedback)
+** code as a crime scene as feedback/vcs feedback
+** micro services makes good feedback easier in some aspects and harder with others
 ** Frontend - Codebehind -> JQuery -> Angular -> React -> ELM
+** TODO Stategies for handling sideffects in code
+*** Why write about this -> read Krisajenkins great posts about what functional languages and sideffects
+*** But what strategies can we then use with sideeffects?
+**** No sideeffects at all - push the sideffect out of the current function and pass the data in (now its somebody elses problem...)
+"thats a problem for future me"
+Reasoning about that complicated business are dosen't get easier if its got time and other random data sideffects mixed into it.
+It's actually much easier if you know that the code hasn'nt got any sideeffects, and you can just test it as you please.
+**** Api your dependencies/sideffects, so they are easier to handle and get around
+**** Choose better sideffects - some are way worse than others
+*** Choose the right test-scope
+*** What has this to do with functional languages?
+Wouldn't all this be easier, if you had a harder time doing it wrong in the language you were using?
+
+This is what functional languages typically do
 ** Elm - declarative frontend programming
 ** SOA - 'Svartider' and turning the bucket around                                                                                     
 Om hvordan svartider må være aggregerede, sa services kan kalde services
 
-+ om hvordan man så ændrer dette mønster, til det omvendte
++ om hvordan man så ændrer dette mønster, til det omvendte 
 ** SOA - Microservices og asyncronous communication
+** SOA - Microservices size is about the business.. such a bad name..
 ** VCS - Why i really don't like TFS but prefer Git
 Being a professional .NET developer i've used TFS pretty much since the sourcesafe days (along with the occational svn). I've though used git alot on side project and at home. If your only familiar with TFS and perhaps svn, you have no idea what your missing out on, and you might be hurting alot in areas as branching more than you have to.
 
@@ -230,23 +306,13 @@ Tag udsnit stort set fra min rapport og forklar hvorfor nosql er et dårligt nav
 Denormalisering i RavenDB versus normalisering i relationel databas
 ** Db - Integration versus application databas
 
+** Db - Why its hard to refactor a databse.. (hvad var det nu for en fowler bog?)
 ** DONE Db - About my professional master thesis on RavenDB (A case study of the document database RavenDB)
 About what i did, when i did it
 And what i found in a heli overview
 ** DONE Practising TDD Kata's with code constraints
 CLOSED: [2015-07-27 Mon 16:09]
 --> learning ruby on codeacademy to do the examples in ruby :)
-** TODO Stategies for handling sideffects in code
-*** Why write about this -> read Krisajenkins great posts about what functional languages and sideffects
-*** But what strategies can we then use with sideeffects?
-**** No sideeffects at all - push the sideffect out of the current function and pass the data in (now its somebody elses problem...)
-"thats a problem for future me"
-Reasoning about that complicated business are dosen't get easier if its got time and other random data sideffects mixed into it.
-It's actually much easier if you know that the code hasn'nt got any sideeffects, and you can just test it as you please.
-**** Api your dependencies/sideffects, so they are easier to handle and get around
-**** Choose better sideffects - some are way worse than others
-*** Choose the right test-scope
-*** What has this to do with functional languages?
-Wouldn't all this be easier, if you had a harder time doing it wrong in the language you were using?
+**
+* Idea´s for future posts
 
-This is what functional languages typically do
