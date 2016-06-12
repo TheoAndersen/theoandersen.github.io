@@ -1,5 +1,5 @@
 * TODO
-** Tilføj en overskrift (hvad skal den hedde?)
+** DONE Tilføj en overskrift (hvad skal den hedde?)
 ** Tilføje en kort tekst over blog-postsne
 ** Tilføj Disguis kommentarer til bloggen
 https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions

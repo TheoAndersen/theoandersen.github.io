@@ -2,6 +2,7 @@
 layout: post
 title: "Pull Requests are the new best practice"
 comments: true
+published: false
 ---
 Code quality is not only a result of the code you write, but also of how the code is written and put into versioning. The way you tailor the process of writing code, by how you organize, name, review and build versions of your code, has much to do with the quality of the software produced.
 
