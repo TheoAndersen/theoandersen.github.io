@@ -1,7 +1,7 @@
 * TODO
 ** DONE Tilføj en overskrift (hvad skal den hedde?)
-** Tilføje en kort tekst over blog-postsne
-** Tilføj Disguis kommentarer til bloggen
+** DONE Tilføje en kort tekst over blog-postsne
+** DONE Tilføj Disguis kommentarer til bloggen
 https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions
 ** Skriv de første indlæg
 ** Stavekontrol i emacs?
@@ -52,10 +52,15 @@ Make a sort of code-field, where you have arrows on the side, with explaining te
 Måske sortere rækken fra det der passer bedst med emnet og så nedaad??
 
 The toughest part of development, isnt developing the software - its figuring out if the thing you build does it right.. tja.
+Areas:
+- Testing, TDD
+- Builds
+- Meta (about feedback)
+- 
 
+** DONE Feedback - TDD is a feedback technique
 ** Feedback - feedback in development. What and why
 ** Feedback - Feedback on business ideas
-** Feedback - TDD is a feedback technique
 ** ------ most important above this line ------
 ** Builds - quick builds
 ** Elm - elm and feedback versus JavaScript and feedback
@@ -243,7 +248,7 @@ Reasons that this is beneficial:
 - Its easier to concentrate on the design when you don't have to worry about making errors at the same time
 - You can vary the step-size, based on your confidence in what your coding. (larger steps if your confident, more support with smaller steps if your not)
 ** Design - practice your way to better Object-oriented skills                                                                  
-** Languages - Exercises to learn a new language                                                                                      
+**  Languages - Exercises to learn a new language                                                                                      
 Unit test framework (Kent Beck)
 Bowling kata
 Markdown parser (Dave Thomas)
