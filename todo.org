@@ -15,7 +15,10 @@ ITs things like
 - adding tags
 - adding another domain name which fits better with my theme of "Improving software by enhancing feedback"
 
-
+** Share new posts on
+Linkedin
+Twitter
+Reddit (find den rigtige subreddit)
 * Schedule - once a week --- pwew thats much.
 
 -once a week
@@ -59,14 +62,32 @@ Areas:
 - 
 
 ** DONE Feedback - TDD is a feedback technique
+** TODO 20/6 Practising TDD Kata's with code constraints
+** Test - automated tests should create their own testdata
 ** Feedback - feedback in development. What and why
 ** Feedback - Feedback on business ideas
+** Understanding how organizations affect IT decisions
+Det fra Målarkitekturerne, om at forstå at der er mange kræfter der påvirker IT.
+
+IT er ikke kun teknik.. langt fra.. selvom vi gerne bare vil generalisere det til det.
+
+IT skal understøtte forretninge, dvs. du kan ikke lave IT uden at forstå forretningen.
+
+Men hvorfor generaliserer vi så IT til standard-systemer og 3-lags modeller?
+
+Eksempel fra Louis - om at der altid er en afdeling som tjener flest penge,
+og som så får lov til at gå uden om hele firma-processen.
+Men det skal man jo bare forstå og vide. Det er okay hvis der er taget stilling til det.
+At det er et bevidst valg at man forstår de konsekvenser og merarbejde det kan give
+andre steder i biksen.
+*
+** Understanding your runtimes execution-model
+** What is Staticly vs. strongly typed
 ** ------ most important above this line ------
 ** Builds - quick builds
 ** Elm - elm and feedback versus JavaScript and feedback
 ** Test - larger test scopes
 ** Test - testing private members. Are you nuts?
-** Test - automated tests should create their test-data
 ** VCS - gated/pull requests - you should know that you can't break anything when committing
 ** Feedback - bad/slow feedback is extremely expensive
 ** Feedback know what delays you in a day
@@ -315,7 +336,7 @@ Denormalisering i RavenDB versus normalisering i relationel databas
 ** DONE Db - About my professional master thesis on RavenDB (A case study of the document database RavenDB)
 About what i did, when i did it
 And what i found in a heli overview
-** DONE Practising TDD Kata's with code constraints
+
 CLOSED: [2015-07-27 Mon 16:09]
 --> learning ruby on codeacademy to do the examples in ruby :)
 **
