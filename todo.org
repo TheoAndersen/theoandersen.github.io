@@ -82,14 +82,22 @@ At det er et bevidst valg at man forstår de konsekvenser og merarbejde det kan 
 andre steder i biksen.
 *
 ** Understanding your runtimes execution-model
-** What is Staticly vs. strongly typed
+** The "but why?" of functional programming languages
+** Feedback - Bad or slow feedback is extremely expensive
+Tag eksempler fra forskellige folk
+
+Kent Beck - TDD... a feedback technique
+Gojko adzic - Impact mapping - "Delivering business goals, not just software features" www.impactmapping.com
+          -> Dan North..
+
+- Continous Delivery :: being able to release really quickly, to generate feedback as early as possible
+- Impact Mapping :: being able to measure the impact feedback, and map it to what were doing.. is it working?
 ** ------ most important above this line ------
 ** Builds - quick builds
 ** Elm - elm and feedback versus JavaScript and feedback
 ** Test - larger test scopes
 ** Test - testing private members. Are you nuts?
 ** VCS - gated/pull requests - you should know that you can't break anything when committing
-** Feedback - bad/slow feedback is extremely expensive
 ** Feedback know what delays you in a day
 ** Languages - our programming languages are obsolete (we need dependency injection etc etc)
 ** General - tech choices are about the business
