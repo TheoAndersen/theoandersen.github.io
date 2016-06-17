@@ -18,7 +18,7 @@ github_username:  TheoAndersen
 # Build settings
 markdown: kramdown
 
-gems: [jekyll-seo-tag]
+gems: [jekyll-seo-tag, jekyll-sitemap]
 
 
 
