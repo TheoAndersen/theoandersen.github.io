@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Practising TDD Kata's with code constraints"
+title: "Practising code kata's with code constraints"
 comments: true
 published: false
 ---
