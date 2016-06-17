@@ -2,8 +2,7 @@
 layout: post
 title: "A very basic unit test"
 comments: true
-published: false
-draft: true
+published: true
 ---
 Today i realized what the most basic form of a unit-test is.
 

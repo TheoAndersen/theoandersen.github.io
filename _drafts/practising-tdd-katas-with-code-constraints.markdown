@@ -2,7 +2,7 @@
 layout: post
 title: "Practising code kata's with code constraints"
 comments: true
-published: false
+published: true
 ---
 I've lately been teaching Test Driven Development at work by doing mini code-retreats. The idea was that I would lecture as little as possible, to make room for the attendies getting their hands dirty. Being that TDD is a pretty practical technique, you learn quicker if you try it in pairs on a given assignment, rather than following the concept in slides. Each session started with some short theory on the given TDD subtopic of the day and then introduced an assignment, which was carried out in pairs in the style of [Code retreats](http://coderetreat.org/about) (inspired by the work on the subject by Corey Haines and Joe Reinsbergers).
 
