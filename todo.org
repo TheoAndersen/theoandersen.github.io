@@ -93,6 +93,19 @@ Gojko adzic - Impact mapping - "Delivering business goals, not just software fea
 - Continous Delivery :: being able to release really quickly, to generate feedback as early as possible
 - Impact Mapping :: being able to measure the impact feedback, and map it to what were doing.. is it working?
 ** ------ most important above this line ------
+** [Async] 
+** You need to code everything asyncronously and pure by default
+** Static considered harmful
+dotnet professional by day, but look at a other languages and runtimes.. by night ;)
+
+Now asyncronous or parallel programming has always been considered difficult in software engineering and actually this dwelves down to the threading model we use in java or c#, not being particular ideal for asyncronous programming. Its too hard.. Mutexes, semaphores was what i learned at the university, and there is a lot of places where you can shot yourself in the foot and mess up. 
+
+As many in the functional space has known for long, most of this has to do with shared global state, or what we in java or c# call statics.
+
+** Think of syncronous connections as the most expensive in your architecture
+
+** Serveres less architecture...
+** Architecture assignment, where asyncronous links are valued cheaper than synchronous
 ** Builds - quick builds
 ** Elm - elm and feedback versus JavaScript and feedback
 ** Test - larger test scopes
