@@ -10,17 +10,24 @@ title: Improving software by focusing on better feedback
 email: andersen.theo@gmail.com
 description: Blog that focuses on software development feedback and all related to this.
 
+image: /assets/blog_udsnit.png
+
 baseurl: "" 
 url: "http://www.nettreo.com" 
 twitter_username: TheoAndersen
+twitter:
+  username: TheoAndersen
 github_username:  TheoAndersen
 
-image: /assets/blog_udsnit.png
+
 
 # Build settings
 markdown: kramdown
 
-gems: [jekyll-seo-tag, jekyll-sitemap, jekyll-auto-image]
+gems: [jekyll-seo-tag
+      ,jekyll-sitemap
+      ,jekyll-auto-image
+      ,github-pages]
 
 
 
