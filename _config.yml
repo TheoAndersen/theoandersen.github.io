@@ -15,10 +15,12 @@ url: "http://www.nettreo.com"
 twitter_username: TheoAndersen
 github_username:  TheoAndersen
 
+image: /assets/blog_udsnit.png
+
 # Build settings
 markdown: kramdown
 
-gems: [jekyll-seo-tag, jekyll-sitemap]
+gems: [jekyll-seo-tag, jekyll-sitemap, jekyll-auto-image]
 
 
 
