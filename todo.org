@@ -37,6 +37,8 @@ Forhåbentlig kan jeg komme ned på at bruge kun en :S
 =to serve the server=
 jekyll serve
 
+
+
 * Idea for showing a refactoring in a blog post
 Make a sort of code-field, where you have arrows on the side, with explaining text underneith and can switch left or right to show the refactorings of the code
 
@@ -62,8 +64,20 @@ Areas:
 - 
 
 ** DONE Feedback - TDD is a feedback technique
+** DONE Static considered harmful
+dotnet professional by day, but look at a other languages and runtimes.. by night ;)
+
+Now asyncronous or parallel programming has always been considered difficult in software engineering and actually this dwelves down to the threading model we use in java or c#, not being particular ideal for asyncronous programming. Its too hard.. Mutexes, semaphores was what i learned at the university, and there is a lot of places where you can shot yourself in the foot and mess up. 
+
+As many in the functional space has known for long, most of this has to do with shared global state, or what we in java or c# call statics.
 ** TODO 20/6 Practising TDD Kata's with code constraints
 ** Test - automated tests should create their own testdata
+** Tecnical tester.. testers need to know about automated tests -- all the roles are getting automated
+When ever i hear people talk about testers these days, i hear them talk about needing testers which have decent technocal side as well. 
+
+It seems everything is getting naturally more and more automated..
+
+This fits together with the devops movement which merges operations and development in what normally is more 
 ** Feedback - feedback in development. What and why
 ** Feedback - Feedback on business ideas
 ** Understanding how organizations affect IT decisions
@@ -83,7 +97,7 @@ andre steder i biksen.
 *
 ** Understanding your runtimes execution-model
 ** The "but why?" of functional programming languages
-** Feedback - Bad or slow feedback is extremely expensive
+** TODO Feedback - Bad or slow feedback is extremely expensive
 Tag eksempler fra forskellige folk
 
 Kent Beck - TDD... a feedback technique
@@ -95,16 +109,10 @@ Gojko adzic - Impact mapping - "Delivering business goals, not just software fea
 ** ------ most important above this line ------
 ** [Async] 
 ** You need to code everything asyncronously and pure by default
-** Static considered harmful
-dotnet professional by day, but look at a other languages and runtimes.. by night ;)
-
-Now asyncronous or parallel programming has always been considered difficult in software engineering and actually this dwelves down to the threading model we use in java or c#, not being particular ideal for asyncronous programming. Its too hard.. Mutexes, semaphores was what i learned at the university, and there is a lot of places where you can shot yourself in the foot and mess up. 
-
-As many in the functional space has known for long, most of this has to do with shared global state, or what we in java or c# call statics.
 
 ** Think of syncronous connections as the most expensive in your architecture
 
-** Serveres less architecture...
+** Server less architecture
 ** Architecture assignment, where asyncronous links are valued cheaper than synchronous
 ** Builds - quick builds
 ** Elm - elm and feedback versus JavaScript and feedback
