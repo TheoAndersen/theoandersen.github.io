@@ -95,7 +95,7 @@ Men det skal man jo bare forstå og vide. Det er okay hvis der er taget stilling
 At det er et bevidst valg at man forstår de konsekvenser og merarbejde det kan give
 andre steder i biksen.
 *
-** Understanding your runtimes execution-model
+** DOING Understanding your runtimes execution-model
 ** The "but why?" of functional programming languages
 ** TODO Feedback - Bad or slow feedback is extremely expensive
 Tag eksempler fra forskellige folk
@@ -107,6 +107,11 @@ Gojko adzic - Impact mapping - "Delivering business goals, not just software fea
 - Continous Delivery :: being able to release really quickly, to generate feedback as early as possible
 - Impact Mapping :: being able to measure the impact feedback, and map it to what were doing.. is it working?
 ** ------ most important above this line ------
+** Did i just create an elixir singleton by accident?
+Using the module name in every function to a genserver, makes it a singleton effectively.
+
+Now this might be allright in an application, but not when testing it.. How do i get around this when testing?
+
 ** [Async] 
 ** You need to code everything asyncronously and pure by default
 
