@@ -1,6 +1,23 @@
 ---
 layout: default
 ---
+<script>window.twttr = (function(d, s, id) {
+   var js, fjs = d.getElementsByTagName(s)[0],
+       t = window.twttr || {};
+   if (d.getElementById(id)) return t;
+   js = d.createElement(s);
+   js.id = id;
+   js.src = "https://platform.twitter.com/widgets.js";
+   fjs.parentNode.insertBefore(js, fjs);
+   
+   t._e = [];
+   t.ready = function(f) {
+     t._e.push(f);
+   };
+   
+   return t;
+ }(document, "script", "twitter-wjs"));</script>
+
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
@@ -10,7 +27,14 @@ layout: default
 
   <div class="post-content" itemprop="articleBody">
     {{ content }}
+
+    <a class="twitter-share-button"
+       href="https://twitter.com/intent/tweet?text=Interesting post by @TheoAndersen">
+      Tweet</a>
   </div>
+
+
+  
   {% if page.comments %}
   <div class="post-comment">
     <div id="disqus_thread"></div>
@@ -35,3 +59,5 @@ layout: default
   {% endif %}
 
 </article>
+
+
