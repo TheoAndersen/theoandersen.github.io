@@ -3,7 +3,7 @@ layout: post
 title: "Three programming language execution models"
 comments: true
 published: true
-image: /assets/executionmodel_actors.gif
+image: /assets/executionmodel_actors.png
 ---
 Every code written in a programming language, is executed in a specific way when run. The executions depends on the language and defines how it interacts with the hardware. This is called an [execution model](https://en.wikipedia.org/wiki/Execution_model).
 
