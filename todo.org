@@ -63,15 +63,8 @@ Areas:
 - Meta (about feedback)
 - 
 
-** DONE Feedback - TDD is a feedback technique
-** DONE Static considered harmful
-dotnet professional by day, but look at a other languages and runtimes.. by night ;)
-
-Now asyncronous or parallel programming has always been considered difficult in software engineering and actually this dwelves down to the threading model we use in java or c#, not being particular ideal for asyncronous programming. Its too hard.. Mutexes, semaphores was what i learned at the university, and there is a lot of places where you can shot yourself in the foot and mess up. 
-
-As many in the functional space has known for long, most of this has to do with shared global state, or what we in java or c# call statics.
-** TODO 20/6 Practising TDD Kata's with code constraints
 ** Test - automated tests should create their own testdata
+** Scrum - physical board vs an online board
 ** Tecnical tester.. testers need to know about automated tests -- all the roles are getting automated
 When ever i hear people talk about testers these days, i hear them talk about needing testers which have decent technocal side as well. 
 
@@ -95,8 +88,8 @@ Men det skal man jo bare forstå og vide. Det er okay hvis der er taget stilling
 At det er et bevidst valg at man forstår de konsekvenser og merarbejde det kan give
 andre steder i biksen.
 *
-** DOING Understanding your runtimes execution-model
 ** The "but why?" of functional programming languages
+** Familieliv og ambitioner
 ** TODO Feedback - Bad or slow feedback is extremely expensive
 Tag eksempler fra forskellige folk
 
@@ -106,6 +99,31 @@ Gojko adzic - Impact mapping - "Delivering business goals, not just software fea
 
 - Continous Delivery :: being able to release really quickly, to generate feedback as early as possible
 - Impact Mapping :: being able to measure the impact feedback, and map it to what were doing.. is it working?
+
+> Intro - Elaborate on this blogs purpose on development feedback
+
+> The why - Most methodologies and many problems center around feedback.
+
+> What can we do?
+  - Use the methods for what they're supposed to do (TDD as a feedback technique)
+  - Focus on improving the right kind of feedback, nomatter where you are in the tool chain
+    - Program manager / Business analyst -> Are the customer getting the right feedback?
+    - Scrum master -> Are the team getting the right feedback
+    - Team member -> Am i getting the right feedback
+n
+ Microservices
+ - 
+
+ 
+
+>  Realize that many software methodologies are centered on improving feedback, and that many problems are centered
+Agile.
+> How long does it take to fix an error?
+Man kan godt tro at det man laver for at rette en fejl er at kode rettelsen, men 90% går på at forstå og finde fejlen og derfra finde den rigtige måde at rette den på.. hvorefter at kunne teste den og bekræfte at det virker
+
+- Det er fedt at kunne lave en test først, sådan at man har bekræftelsen når man har rettet den
+> Decent test feedback
+*** 
 ** ------ most important above this line ------
 ** Did i just create an elixir singleton by accident?
 Using the module name in every function to a genserver, makes it a singleton effectively.

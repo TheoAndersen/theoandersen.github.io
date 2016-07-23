@@ -3,7 +3,6 @@ layout: post
 title: "Refactoring your versioning history"
 comments: true
 published: true
-image: /assets/rewriting_history_rebase.png
 ---
 In my professional (read "closed-source") life, the versioning history of any project is a byproduct the coding of the project. What I mean is, there's not much thought about how the history reads or is structured.
 
