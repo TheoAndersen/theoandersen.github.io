@@ -62,7 +62,96 @@ Areas:
 - Builds
 - Meta (about feedback)
 - 
+** Program using text editors (instead of IDEs)
+** Programming in emacs
+** Your architecture should show the domain
 
+-> Uncle bobs talk about this
+
+-> Commands instead of services with many business methods
+** (need to know more) The "but why?" of functional programming
+
+*** Whats wrong with our present imperative object oriented languages?
+**** There are too many ways to make errors in imperative programming languages
+
+_too many ways to make errors_
+
+To many ways to fail - The tools can be improved..
+
+- look at crockford's "Javascript the good parts" (reference the podcast)
+- The little story about JavaScript
+
+My own doubts about async/await.. it will make it much easier to introduce difficult errors
+
+_most people don't program object oriented in their object oriented language_
+
+Object Oriented programming is not easy (link to that OO pun post)
+Most don't know how to develop object oriented, and just rely on 
+
+_to do it right, is very laboursome/cumbersome_
+- Dependency Injection
+- Testability
+
+**** Many can't figure out how to program in an object oriented style
+**** Programning object-oriented makes for a lot of plumming code
+**** Object-oriented languages are bad at modelling concurrent programs (hard to work with)
+**** Functional programming seems all over the place, to be honest
+
+What was good about the other languages, was that they look a lot a like.
+Java and c#? please... python... etc..
+
+**** "The good parts" of a programming language
+
+**** Hey we have higher order functions in XYZ, its functional
+
+Well in some languages, you can do functional'ish style of programming.. but it gets cumbersome really quickly (see the pattern here?)
+
+
+*** Whats a definition of a functional language?
+
+Is almost that its not based on classes... 
+First requirement is that you don't base your structure on classes.
+You base them on functions, and the datastructures the functions work on.
+
+What about 'encapsulation`?
+
+Well actually typically encapsulation is really hard to do, and normally OO dosen't really do it right.. typically i see leaky encapsulations. 
+
+In functional programming you focus on solving the problem, not on wrapping it up in boxes..
+
+*** What are some problems then with functional programming languages?
+**** Its a different paradigm - Object oriented developers will find the shift difficult to begin with
+
+*** There is a lot of community working on functional languages right now
+
+Erlang/Elixir
+
+Elm
+** TODO Stategies for handling sideffects in code
+*** Why write about this -> read Krisajenkins great posts about what functional languages and sideffects
+*** But what strategies can we then use with sideeffects?
+**** No sideeffects at all - push the sideffect out of the current function and pass the data in (now its somebody elses problem...)
+"thats a problem for future me"
+Reasoning about that complicated business are dosen't get easier if its got time and other random data sideffects mixed into it.
+It's actually much easier if you know that the code hasn'nt got any sideeffects, and you can just test it as you please.
+**** Api your dependencies/sideffects, so they are easier to handle and get around
+**** Choose better sideffects - some are way worse than others
+*** Choose the right test-scope
+*** What has this to do with functional languages?
+Wouldn't all this be easier, if you had a harder time doing it wrong in the language you were using?
+
+This is what functional languages typically do
+** Elixir what is that?
+** Did i just create an elixir singleton by accident?
+Using the module name in every function to a genserver, makes it a singleton effectively.
+
+Now this might be allright in an application, but not when testing it.. How do i get around this when testing?
+** Elm what is that?
+** F# what is that?
+** ** Think of syncronous connections as the most expensive in your architecture
+
+** ------ most important above this line ------
+** Using variables versus functions.. variables makes it more difficult..
 ** Test - automated tests should create their own testdata
 ** Scrum - physical board vs an online board
 ** Tecnical tester.. testers need to know about automated tests -- all the roles are getting automated
@@ -88,7 +177,6 @@ Men det skal man jo bare forstå og vide. Det er okay hvis der er taget stilling
 At det er et bevidst valg at man forstår de konsekvenser og merarbejde det kan give
 andre steder i biksen.
 *
-** The "but why?" of functional programming languages
 ** Familieliv og ambitioner
 ** TODO Feedback - Bad or slow feedback is extremely expensive
 Tag eksempler fra forskellige folk
@@ -124,16 +212,9 @@ Man kan godt tro at det man laver for at rette en fejl er at kode rettelsen, men
 - Det er fedt at kunne lave en test først, sådan at man har bekræftelsen når man har rettet den
 > Decent test feedback
 *** 
-** ------ most important above this line ------
-** Did i just create an elixir singleton by accident?
-Using the module name in every function to a genserver, makes it a singleton effectively.
-
-Now this might be allright in an application, but not when testing it.. How do i get around this when testing?
-
 ** [Async] 
 ** You need to code everything asyncronously and pure by default
 
-** Think of syncronous connections as the most expensive in your architecture
 
 ** Server less architecture
 ** Architecture assignment, where asyncronous links are valued cheaper than synchronous
@@ -159,20 +240,7 @@ Now this might be allright in an application, but not when testing it.. How do i
 ** code as a crime scene as feedback/vcs feedback
 ** micro services makes good feedback easier in some aspects and harder with others
 ** Frontend - Codebehind -> JQuery -> Angular -> React -> ELM
-** TODO Stategies for handling sideffects in code
-*** Why write about this -> read Krisajenkins great posts about what functional languages and sideffects
-*** But what strategies can we then use with sideeffects?
-**** No sideeffects at all - push the sideffect out of the current function and pass the data in (now its somebody elses problem...)
-"thats a problem for future me"
-Reasoning about that complicated business are dosen't get easier if its got time and other random data sideffects mixed into it.
-It's actually much easier if you know that the code hasn'nt got any sideeffects, and you can just test it as you please.
-**** Api your dependencies/sideffects, so they are easier to handle and get around
-**** Choose better sideffects - some are way worse than others
-*** Choose the right test-scope
-*** What has this to do with functional languages?
-Wouldn't all this be easier, if you had a harder time doing it wrong in the language you were using?
 
-This is what functional languages typically do
 ** Elm - declarative frontend programming
 ** SOA - 'Svartider' and turning the bucket around                                                                                     
 Om hvordan svartider må være aggregerede, sa services kan kalde services
