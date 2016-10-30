@@ -73,3 +73,6 @@ The benefits of pull request is that the changes get naturally boundled in a pac
 
 Using pull requests, does though force users into using branching. Git advocates would say that its almost imposible to use git without using branches anyway, but I have found that pull request workflows work better with developers that are at least a bit aquainted to git and "dancing with branches".
 
+
+
+

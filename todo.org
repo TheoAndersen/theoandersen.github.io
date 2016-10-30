@@ -61,8 +61,47 @@ Areas:
 - Testing, TDD
 - Builds
 - Meta (about feedback)
-- 
-** Program using text editors (instead of IDEs)
+-
+** DOING Different ways to think about testing your system
+** Working with nulls in different languages
+- Java and C-Sharp.. woops, the thing you were looking for aint there
+- Objective-c... sshh.. its propably allright.. just return null
+- Elm... nothings ever null by coincidence
+
+https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare
+
+Vend den om så det handler om de forskellige approachs, som så underbygges af at det faktisk er dette sprog der gør det.. osv..
+
+
+Elm example: 
+
+
+import Html exposing (..)
+
+
+findTingJegSkalSkrive =
+  "tet"
+
+main =
+  text (
+    case findTingJegSkalSkrive of
+      Just text -> text
+      _ -> "dunno")
+
+
+
+--findTingJegSkalSkrive : Maybe String
+--findTingJegSkalSkrive
+-- = Nothing
+
+
+
+--main =
+--  text (
+--    case findTingJegSkalSkrive of
+--      Just text -> text
+--      _ -> "dunno")
+
 ** Programming in emacs
 ** Your architecture should show the domain
 
@@ -106,8 +145,11 @@ Java and c#? please... python... etc..
 
 Well in some languages, you can do functional'ish style of programming.. but it gets cumbersome really quickly (see the pattern here?)
 
-
 *** Whats a definition of a functional language?
+
+- Ham der snakker om at det handler om at være ond ved side-effects...
+
+  - Men han taler så ikke så meget om hvad man så gør ved dem.. de er der jo et sted
 
 Is almost that its not based on classes... 
 First requirement is that you don't base your structure on classes.
@@ -119,14 +161,16 @@ Well actually typically encapsulation is really hard to do, and normally OO dose
 
 In functional programming you focus on solving the problem, not on wrapping it up in boxes..
 
+*** Functinal programming often has more advanced functions/operators and other stuff
 *** What are some problems then with functional programming languages?
 **** Its a different paradigm - Object oriented developers will find the shift difficult to begin with
 
 *** There is a lot of community working on functional languages right now
+Introduktion til at kunne tale om de funktionelle sprog jeg har kigget på
+- Erlang/Elixir
+- Elm
+- F# vil jeg gerne kigge på
 
-Erlang/Elixir
-
-Elm
 ** TODO Stategies for handling sideffects in code
 *** Why write about this -> read Krisajenkins great posts about what functional languages and sideffects
 *** But what strategies can we then use with sideeffects?
@@ -142,6 +186,34 @@ Wouldn't all this be easier, if you had a harder time doing it wrong in the lang
 
 This is what functional languages typically do
 ** Elixir what is that?
+** Testing strategies
+Noget om hvornår jeg tester hvad, og hvornår jeg bruger TDD.
+
+Ionic app.. javascript i ios hybrid.. fint nok.
+
+Først
+
+Prototype mode.. få noget ud.. spike det egentlig.. gider ikke test.. bare få det til at virke.. (ingen tests)
+
+Nu har jeg noget der virker.. hmm.. nu begynder jeg at rode lidt mere at teste det..
+
+lad os sætte end-2-end tests op.. i hybrid så vi kan benytte os at selenium.. eller noget der wrapper uden om.
+
+fint det er oppe også på build serveren.. og vi har nogle accept tests som tager de grove tests. 
+ - men som eneste anke er at de ikke tager de native ting med (kun web) og heller ikke tager eksterne afhængigheder med.. stubber dem)
+ - det kan godt være vi skal have noget mere rigtig accept test på et tidspunt, hvis det her gør lidt for ondt.. men jeg gider ikke sætte det op nu
+
+videre med udviklinge.. fint fint.. koder.. 
+hov.. jeg skal bruge lidt mere dato-ræs.. det er javascript godt nok ikke særlig god til.. hmm besværligt...
+hmm.. ej det her kommer jeg til at rode rundt i... det er lidt tricky.. kunne godt bruge en unit test nu.. end-2-end testsne er for store.. for besværlige.
+
+hmm okay .. nu sætter jeg unit tests op til det her.. men det er kun fordi lige det her er lidt besværligt.. mht. modellen og regne tider frem.
+Det bliver nok også brugbart når man skal lave lidt konvertering fra noget indkommmende data ind til min model, da der nok også bliver lige lidt tricky der.
+
+
+----
+
+og så noget opsamlende om de tanker der lægger bag de her tanker..
 ** Did i just create an elixir singleton by accident?
 Using the module name in every function to a genserver, makes it a singleton effectively.
 
