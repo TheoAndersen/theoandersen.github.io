@@ -3,6 +3,7 @@ layout: post
 title: "You dont need to see my nulls"
 comments: true
 published: true
+image: /assets/you_dont_need_to_see_my_nulls.png
 ---
 In most programming languages, _null_ is the most common thing in the world, and every programmer knows that an object can be 'empty', or in other words have the value _null_, _nil_ or _undefined_ depending on the language.
 
