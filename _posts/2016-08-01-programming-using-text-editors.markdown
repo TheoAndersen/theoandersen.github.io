@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: "Why program in a text editor"

@@ -219,6 +219,26 @@ Using the module name in every function to a genserver, makes it a singleton eff
 
 Now this might be allright in an application, but not when testing it.. How do i get around this when testing?
 ** Elm what is that?
+** Always using the model at hand
+I mange sprog er der et genoptrædende pattern, om at det er en fordel at konvertere indkoment data til programmeringssprogets egen model, og så arbejde derudfra.
+ 
+
+I C# og Java, handler det om at konvertere det indkomne til Poco og pojo’er, og ikke bare afhænge af primitive datatyper, som at det hele ligger i en json i en string eller lignende. Dictionary.. osv..
+ 
+
+I Elm, handler det om at parse alt indkomment til Elm’s egene datatyper hvilket gøres med json parsere
+ 
+
+I Elixir handler det om at konvertere det indkomne til elixirs egne typer, elixir er ikke stærkt typet, så her er elixirs egne typer structs (eller dicts). Men det er så det første man gør, at parse fx indkomment json til structs, og så kan man arbejde videre derfra.
+ 
+
+Lad være med at blande forretningslogikken ind i det her parsning heller, så blander to pærer og banener sammen, og det kan være svært at hitte rundt i om det er parsningen eller forretningslogikken hvor noget sker, fejler osv..
+ 
+
+I javascript er en af (de få) fordele, at json er javascripts eget format. Dvs hvis man sender javascript noget json, er det rigtig let at få det til dens egen datatype… det sker næsten automatisk… Det er tilgengæld overhoved ikke stærkt typed, men det er nemt at have med at gøre.
+ 
+
+Måske et simpelt eksempel på det samme i alle disse sprog.
 ** F# what is that?
 ** ** Think of syncronous connections as the most expensive in your architecture
 
